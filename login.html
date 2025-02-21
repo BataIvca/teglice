@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input::placeholder {
+            color: #FFF;
+            background-color: #07F;
+            color: #FFF;
+        }
+        input{
+            background-color: #07F;
+            color: #FFF; 
+            position: absolute;
+        }
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            background: linear-gradient(to bottom, #07F, #BBB);
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
+        }
+        #veliki{
+            position: absolute;
+            background-color: #FFF;
+        }
+        #mali{
+            position: absolute;
+            color: red;
+            text-align: center;
+        }
+        #naVrh{
+            position: absolute;
+            color: #FFF;
+            z-index: 1;
+            text-align: center;
+        }
+        #slika{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="naVrh">
+        <br><br><br><br><br><br><br>
+        <h1>DOBRODOSLI</h1>
+        <p>Neki tekst</p>
+    </div>
+    <div id="veliki">
+        <img id="slika" src="images/water1.png" alt="Can not load image">
+        <form action="" method="post" id="forma">
+            <input type="text" id="inputime" name="inputime" placeholder="Unesite ime" autocomplete="new-password">
+            <br>
+            <input type="password" id="inputpass" name="inputpass" placeholder="Unesite password" >
+            <br>
+            <input type="submit" id="dugme" value="Potvrdi">
+        </form>
+        <div id='mali'>
+            <h4 id="imess"></h4>
+            <h4 id="passmess"></h4>
+        </div>
+    </div>       
+        <script>
+
+        const veliki = document.getElementById('veliki');
+        const mali = document.getElementById('mali');
+        const naVrh = document.getElementById('naVrh');
+        const inputime = document.getElementById('inputime');
+        const inputpass = document.getElementById('inputpass');
+        const dugme = document.getElementById('dugme');
+
+        function styles(){
+            let halfHeight = window.innerHeight/2;
+            if(window.innerWidth >= window.innerHeight || window.innerWidth > halfHeight){
+                veliki.style.width = '50vh';
+                veliki.style.height = '80vh';
+                veliki.style.left = window.innerWidth/2 - window.innerHeight/4 + 'px';
+                veliki.style.top = '10vh';
+                veliki.style.border = '0.1vh solid #000';
+
+                naVrh.style.width = '50vh';
+                naVrh.style.height = '40vh';
+                naVrh.style.left = window.innerWidth/2 - window.innerHeight/4 + 'px';
+                naVrh.style.top = '10vh';
+                naVrh.style.border = '0.1vh solid #000';
+                naVrh.style.fontSize = '2vh';
+
+                inputime.style.width = '30vh';
+                inputime.style.height = '3vh';
+                inputime.style.left = '10vh';
+                inputime.style.top = '45vh';
+                inputime.style.fontSize = '2vh';
+                inputime.style.border = '0.2vh solid #000';
+                inputime.style.borderRadius = '1.5vh';
+
+                inputpass.style.width = '30vh';
+                inputpass.style.height = '3vh';
+                inputpass.style.left = '10vh';
+                inputpass.style.top = '51vh';
+                inputpass.style.fontSize = '2vh';
+                inputpass.style.border = '0.2vh solid #000';
+                inputpass.style.borderRadius = '1.5vh';
+
+                dugme.style.width = '10vh';
+                dugme.style.height = '3vh';
+                dugme.style.left = '20vh';
+                dugme.style.top = '58vh';
+                dugme.style.fontSize = '2vh';
+                dugme.style.border = '0.2vh solid #000';
+                dugme.style.borderRadius = '1.5vh';
+
+                slika.style.width = '50vh';
+                slika.style.height = '40vh';
+                slika.style.left = '0vh';
+                slika.style.top = '0vh';
+
+                mali.style.width = '30vh';
+                mali.style.left = '10vh';
+                mali.style.top = '68vh';
+                mali.style.fontSize = '2vh';
+            }else{
+                veliki.style.width = '100vw';
+                veliki.style.height = '160vw';
+                veliki.style.left = '0px';
+                veliki.style.top = (window.innerHeight - window.innerWidth*1.6)/2 + 'px';
+                veliki.style.border = '0.2vw solid #000';
+
+                naVrh.style.width = '100vw';
+                naVrh.style.height = '80vw';
+                naVrh.style.left = '0px';
+                naVrh.style.top = (window.innerHeight - window.innerWidth*1.6)/2 + 'px';
+                naVrh.style.border = '0.2vw solid #000';
+                naVrh.style.fontSize = '4vw';
+
+                inputime.style.width = '60vw';
+                inputime.style.height = '6vw';
+                inputime.style.left = '20vw';
+                inputime.style.top = '90vw';
+                inputime.style.fontSize = '4vw';
+                inputime.style.border = '0.4vw solid #000';
+                inputime.style.borderRadius = '3vw';
+
+                inputpass.style.width = '60vw';
+                inputpass.style.height = '6vw';
+                inputpass.style.left = '20vw';
+                inputpass.style.top = '102vw';
+                inputpass.style.fontSize = '4vw';
+                inputpass.style.border = '0.4vw solid #000';
+                inputpass.style.borderRadius = '3vw';
+
+                dugme.style.width = '20vw';
+                dugme.style.height = '6vw';
+                dugme.style.left = '40vw';
+                dugme.style.top = '116vw';
+                dugme.style.fontSize = '4vw';
+                dugme.style.border = '0.4vw solid #000';
+                dugme.style.borderRadius = '3vw';
+
+                slika.style.width = '100vw';
+                slika.style.height = '80vw';
+                slika.style.left = '0vh';
+                slika.style.top = '0vh';
+
+                mali.style.width = '60vw';
+                mali.style.left = '20vw';
+                mali.style.top = '136vw';
+                mali.style.fontSize = '4vw';
+            }
+        }
+        styles();
+        window.addEventListener('resize', () => { styles(); });
+
+            const forma = document.getElementById('forma');
+            
+            forma.addEventListener('submit', async (e)=>{
+                e.preventDefault();
+                const inputime = forma.inputime.value;
+                const inputpass = forma.inputpass.value;
+                
+                try {
+                    const res = await fetch('/login' ,{
+                        method: 'POST',
+                        body: JSON.stringify({inputime: inputime , inputpass: inputpass}),
+                        headers:{'Content-Type': 'application/json'}
+                    });
+                    const data = await res.json();
+                    document.getElementById('imess').innerHTML = data.imess;
+                    document.getElementById('passmess').innerHTML = data.passmess;
+                    if(!data.imess && !data.passmess){ window.location.href = `index?userID=${data.inputime}`; }
+                } catch (err) {
+                    console.log(err);
+                }
+            });
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,3868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.google.com/noto/specimen/Noto+Serif?preview.text=Whereas%20recognition%20of%20the%20inherent%20dignity">
+    <link rel="stylesheet" href="https://fonts.google.com/specimen/PT+Sans?preview.text=Whereas%20recognition%20of%20the%20inherent%20dignity">
+    <title>Document</title>
+    <style>
+        body{ 
+            width: 100%;
+            margin: 0px; 
+            background: linear-gradient(to bottom, #07F, #BBB);
+            overflow: hidden;
+        }
+        #container{ 
+            width: 24cm;
+            height: 100vh;
+            z-index: 120;
+            position: absolute;
+            display: none; 
+            margin: auto;
+            overflow: scroll;
+            scrollbar-width: none;  
+            scrollbar-color: transparent transparent;
+        }
+        #container::-webkit-scrollbar-track {
+            background: transparent;
+        } 
+        #container::-webkit-scrollbar-thumb {
+            background: transparent;
+        }  
+        .izreke{ 
+            margin: auto; 
+            text-align: center;
+            z-index: 2;
+        }
+        input{ 
+            z-index: 4;
+            position: absolute;
+            box-sizing: border-box;
+        }
+        ul{
+            text-align: left;
+        } 
+        #signInBtn{ 
+            width:10%; 
+            background: 00F; 
+            position: fixed; 
+            left: 90%; 
+            top: 6%; 
+            z-index: 5;
+            font-size: 100%;
+            display: none;
+        }  
+        #logInBtn{ 
+            width:10%;  
+            position: fixed; 
+            left: 90%; 
+            top: 10%; 
+            z-index: 5;
+            font-size: 100%;
+            display: none;
+        }   
+        #logOutBtn{ 
+            width:10%;  
+            position: fixed; 
+            left: 90%; 
+            top: 10%; 
+            z-index: 5;
+            font-size: 100%;
+            display: none;
+        }
+        #adminBtn{ 
+            width:10%;  
+            position: fixed; 
+            left: 90%; 
+            top: 14%; 
+            z-index: 5;
+            font-size: 100%;
+            display: none;
+            background-color: red;
+        }
+        #brisiBtn{ 
+            width:10%;  
+            position: fixed; 
+            left: 90%; 
+            top: 18%; 
+            z-index: 5;
+            font-size: 100%;
+            display: none;
+            background-color: red;
+        }
+        #daljeBtn{ 
+            width:10%;  
+            position: fixed; 
+            left: 45%; 
+            top: 5%; 
+            z-index: 6;
+            font-size: 100%;
+            display: none;
+            background-color: red;
+        }
+        #formContainer{
+            display: none;
+            width: 30vw;  
+            position: absolute; 
+            z-index: 11;
+            background-color: transparent;
+            text-align: center;
+        }
+        #formContainer input{ 
+            z-index: 4;
+            position: static;
+            width: 100%;
+            font-size: 150%;
+            text-align: center;
+            background-color: transparent;
+            border: none; 
+            border-bottom: 0.2vh solid #000;
+        }
+        #formContainer input:focus {
+            background-color: transparent; 
+        }
+
+        #formContainer input:active {
+            background-color: transparent; 
+        }
+        #formContainer button{ 
+            z-index: 4;
+            position: static;
+            width: 100%;
+            font-size: 150%;
+            display: none;
+        }
+        #canvas{
+            display: block;
+            margin: auto;
+        }
+        .dugmad{
+            background: url('images/dugme.png') no-repeat center center; 
+            background-size: 200% 200%;
+            color: white; 
+            text-align: center; 
+            padding: 0; 
+            cursor: pointer;
+            display: block;
+            position: absolute;
+        }
+
+        #textarea {
+            border: none;
+            font-style: italic;
+            background: transparent;
+            color: black;  
+            text-align: center;
+            line-height: 1.5; 
+            padding: 0;
+            resize: none;
+            outline: none;
+            overflow: hidden;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            text-align: center;
+            vertical-align: middle;
+            display: none;
+            overflow: scroll;
+            scrollbar-width: none;  
+            scrollbar-color: transparent transparent;
+        }
+        #textarea::-webkit-scrollbar-track {
+            background: transparent;
+        } 
+        #textarea::-webkit-scrollbar-thumb {
+            background: transparent;
+        } 
+        .divcici{
+            background-color: #FFF;
+            width: 23cm;
+            text-align: center;
+        }
+        .divcici1{
+            background-color: #DDD;
+            width: 21cm;
+            margin: 1cm;
+            height: 297mm;
+            text-align: center;
+        }
+        .divcici2{
+            width: 7cm;
+            height: 49.5mm;
+            float: left;
+            display: flex;                
+            justify-content: center;      
+            align-items: center; 
+            padding: 3mm;
+        }
+        .pdfDugme{
+            display: inline-block;
+            font-size: 10mm;
+            margin: 2cm;
+        }
+        label{
+            display: none;
+            position: absolute;
+            z-index: 20;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #090;
+            border: 1px solid black;
+        }
+        label:hover {
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+        #hlink{
+            display: none;
+            position: absolute;
+            z-index: 20;
+            border: 1px solid red;
+            text-align: center;
+            margin: 0px;
+            box-sizing: border-box;
+            background-color: #0F0;
+        }
+        /*
+        div{
+            white-space: pre-wrap;
+        }
+        canvas{
+            white-space: pre-wrap;
+        }
+        */
+        #textarea1 {
+            font-style: italic;
+            text-align: center;
+            position: absolute; 
+            top: -9999px;        
+            left: -9999px;  
+            overflow: scroll;
+            scrollbar-width: none;  
+            scrollbar-color: transparent transparent;     
+        }
+    </style>
+</head>
+<body id="body">
+    <a href="signin"><button id="signInBtn">Sign in</button></a>
+    <a href="login"><button id="logInBtn">Log in</button></a>
+    <button id="logOutBtn" autocomplete="off">Log out</button>
+    <button id="adminBtn" autocomplete="off">Admin</button>
+    <button id="brisiBtn" autocomplete="off">Brisi</button>
+
+    <textarea name="textarea" id="textarea" placeholder="Napisi sam poruku"></textarea>
+    <textarea name="textarea" id="textarea1" placeholder="Napisi sam poruku"></textarea>
+    <div id="container"></div>
+    <div id="formContainer">
+        <br><br><br>
+        <input type="text" id="imeBtn" placeholder="Ime i prezime *" autocomplete="new-password"><br><br>
+        <input type="text" id="mestoBtn" placeholder="Mesto *" autocomplete="new-password"><br><br>
+        <input type="text" id="ulicaBtn" placeholder="Ulica i broj *" autocomplete="new-password"><br><br>
+        <input type="text" id="postanskiBtn" placeholder="Postanski broj *" autocomplete="new-password"><br><br>
+        <input type="text" id="telefonBtn" placeholder="Telefon *" autocomplete="new-password"><br><br>
+        <input type="text" id="emailBtn" placeholder="Email(opciono)" autocomplete="new-password"><br><br>
+        <button id="poruciBtn">Poruci</button>
+    </div>   
+    <canvas id="canvas"></canvas>
+    <canvas id="canvas1"></canvas>
+    
+    <label id="fileInputL" for="fileInput">
+        Dodaj fotografiju
+        <input type="file" id="fileInput" accept=".png, .jpg, .jpeg, .heif, .heic, .webp">
+    </label>
+    <input type="text" id="textInput" placeholder="Text/link">
+    <h1 id="hlink">Napiši tajnu poruku ili unesi link pesme sa YouTube-a.</h1>
+
+  
+      
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+
+  function createPDFFromDivs(ddiv1, ddiv2, ddiv3, ddiv4) {
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+
+    const div1 = ddiv1;
+    const div2 = ddiv2;
+    const div3 = ddiv3;
+    const div4 = ddiv4;
+
+    
+    const captureDiv = (div, pageNumber) => {
+      return new Promise((resolve, reject) => {
+        // Pomeranje diva na pocetak stranice da bi html2canvas snimio celokupni sadržaj
+        div.scrollIntoView();
+        html2canvas(div).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          
+          if (pageNumber > 1) {
+            pdf.addPage();
+          }
+          pdf.addImage(imgData, 'PNG', 0, 0, 210, 297);  
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
+      });
+    };
+
+    Promise.all([
+      captureDiv(div1, 1),
+      captureDiv(div2, 2),
+      captureDiv(div3, 3),
+      captureDiv(div4, 4)
+    ]).then(() => {
+      pdf.save('generated-multiple-pages.pdf'); // Čuvanje PDF-a
+    }).catch(error => {
+      console.error("Error generating PDF:", error);
+    });
+  }
+
+
+    
+    
+
+       
+
+        let dimension;
+
+        const body = document.getElementById('body');
+        const canvas = document.getElementById('canvas');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        const ctx = canvas.getContext('2d');
+        const canvas1 = document.getElementById('canvas1');
+        canvas1.width = window.innerWidth;
+        canvas1.height = window.innerHeight;
+        const ctx1 = canvas1.getContext('2d');
+        canvas1.style.background = 'rgba(255, 255, 255, 0)';
+        canvas1.style.position = 'absolute';
+        canvas1.style.left = '0px';
+        canvas1.style.top = '0px';
+        canvas.style.display = 'block';
+        canvas1.style.zIndex = '0';
+        const fileInput = document.getElementById('fileInput');
+        const textInput = document.getElementById('textInput');
+        const fileInputL = document.getElementById('fileInputL');
+        const formContainer = document.getElementById('formContainer');
+        const hlink = document.getElementById('hlink');
+
+        //DOM DUGMICI I SLIKE
+        const textarea = document.getElementById('textarea');
+        const textarea1 = document.getElementById('textarea1');
+        textarea.style.position = 'absolute';
+        textarea.style.width = '500px';
+        textarea.style.height = '500px';
+        textarea.style.zIndex = '500';
+        
+        
+        const signInBtn = document.getElementById('signInBtn');
+        const logInBtn = document.getElementById('logInBtn');
+        const logOutBtn = document.getElementById('logOutBtn');
+        const adminBtn = document.getElementById('adminBtn');
+        const brisiBtn = document.getElementById('brisiBtn');
+
+        const imeBtn = document.getElementById('imeBtn');
+        const mestoBtn = document.getElementById('mestoBtn');
+        const ulicaBtn = document.getElementById('ulicaBtn');
+        const postanskiBtn = document.getElementById('postanskiBtn');
+        const telefonBtn = document.getElementById('telefonBtn');
+        const emailBtn = document.getElementById('emailBtn');
+        const poruciBtn = document.getElementById('poruciBtn');
+
+        const kutijaSL = document.getElementById('kutija');
+        const bocaSL = document.getElementById('boca');
+
+        let urlParams = new URLSearchParams(window.location.search);
+        let userID = urlParams.get('userID');
+        
+        function hasCookie(name) {
+            return document.cookie.split(';').some(cookie => cookie.trim().startsWith(name + '='));
+        }
+
+        function deleteCookie(name) {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+        }
+
+        if(hasCookie('jwt')){ 
+            logInBtn.style.display = 'none'; 
+            signInBtn.style.display = 'none';
+            if(userID == 'Andreja'){ 
+                adminBtn.style.display = 'block'; 
+                logOutBtn.style.display = 'block'; 
+                brisiBtn.style.display = 'block';
+            } 
+        }else{ 
+            logOutBtn.style.display = 'none'; 
+            adminBtn.style.display = 'none';
+        }
+
+        logOutBtn.addEventListener('pointerdown', (e) => {
+            deleteCookie('jwt');
+            userID = '';
+            logOutBtn.style.display = 'none'; 
+            logInBtn.style.display = 'block'; 
+            signInBtn.style.display = 'block';
+            adminBtn.style.display = 'none';
+            brisiBtn.style.display = 'none';
+            window.location.href = "index";
+        });
+
+        let idDezena = false;
+        let extenzijaDezena = false;
+        let porukaDezena = false;
+        let mozesPoslati = true;
+      
+        let omoguci = 1;
+        function slanje(){
+            console.log("slanje funkcija je pozvana");
+            let imeJe = imeBtn.value;
+            let mestoJe = mestoBtn.value;
+            let ulicaJe = ulicaBtn.value;
+            let postanskiJe = postanskiBtn.value;
+            let telefonJe = telefonBtn.value;
+            let emailJe = emailBtn.value;
+            let porukaJe = porukaDezena;
+            let dezenJe = idDezena + extenzijaDezena;
+            let linkicJe = textInput.value;
+            izrekeNiz = izrekeNiz.map(objekat => objekat.mess);
+            pitanjaNiz = pitanjaNiz.map(objekat => objekat.mess);
+
+            const now = new Date();
+            const dayNames = ["Nedeljа", "Ponedeljak", "Utorak", "Sreda", "Četvrtak", "Petak", "Subota"];
+            const monthNames = ["Januar", "Februar", "Mart", "April", "Maj", "Jun", 
+            "Jul", "Avgust", "Septembar", "Oktobar", "Novembar", "Decembar"];
+            const dayOfWeek = dayNames[now.getDay()];
+            const day = now.getDate();
+            const month = monthNames[now.getMonth()];
+            const year = now.getFullYear();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            let vremeJe = `${dayOfWeek}, ${day} ${month} ${year}. ${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
+            
+            let tipJe = poklon.tip;
+            let zaJe = poklon.za;
+
+            if(!String(imeJe).trim()){ alert('Morate uneti ime i prezime'); formContainer.style.display = 'block'; }
+            else if(!String(mestoJe).trim()){ alert('Morate uneti mesto'); formContainer.style.display = 'block'; }
+            else if(!String(ulicaJe).trim()){ alert('Morate uneti ulicu');  formContainer.style.display = 'block';}
+            else if(!String(postanskiJe).trim()){ alert('Morate uneti postanski kod'); formContainer.style.display = 'block'; }
+            else if(!String(telefonJe).trim()){ alert('Morate uneti telefon'); formContainer.style.display = 'block'; }
+
+            if(String(imeJe).trim(), String(mestoJe).trim(), String(ulicaJe).trim(), 
+            String(postanskiJe).trim(), String(telefonJe).trim()){
+                if(poklon.tip == 'kutija'){
+                    posiljka(
+                        imeJe, 
+                        mestoJe, 
+                        ulicaJe, 
+                        postanskiJe, 
+                        telefonJe, 
+                        emailJe, 
+                        izrekeNiz, 
+                        pitanjaNiz, 
+                        'nulaaaaa',
+                        'nulaaaaa',
+                        linkicJe,
+                        vremeJe,
+                        tipJe,
+                        zaJe
+                    );
+                    //page = 11;
+                    //formContainer.style.display = 'none';
+                }else if(poklon.tip == 'boca'){
+                    posiljka(
+                        imeJe, 
+                        mestoJe, 
+                        ulicaJe, 
+                        postanskiJe, 
+                        telefonJe, 
+                        emailJe, 
+                        'nulaaaaa', 
+                        'nulaaaaa', 
+                        porukaJe,
+                        dezenJe,
+                        'nulaaaaa',
+                        vremeJe,
+                        tipJe,
+                        zaJe
+                    );
+                    //page = 10;
+                    //formContainer.style.display = 'none';
+                }
+            }
+        }
+
+        
+
+        brisiBtn.addEventListener('pointerdown', (e) => {          
+            if(page == 4 && poklon.tip == 'kutija'){
+                brisiNizF(1)
+            }else if(page == 6 && poklon.tip == 'kutija'){
+                brisiNizF(2)
+            }else if(page == 4 && poklon.tip == 'boca'){
+                dezenBrisiF(idDezena);
+            }else if(page == 6 && poklon.tip == 'boca'){
+                const pNiz = porukePonudjene.filter((element, index) => {
+                    return element.checked == true;
+                });
+                brisiNizF(4);
+            }
+        });
+
+        adminBtn.addEventListener('pointerdown', (e) => { 
+            if(adminBtn.innerText == 'Nazad'){ 
+                adminBtn.innerText = 'Admin';
+                page = 1;
+                container.style.display = 'none';
+            }else if(adminBtn.innerText == 'Admin'){ 
+                adminBtn.innerText = 'Nazad';
+                page = 20;
+                container.style.display = 'block';
+                container.innerHTML = '';
+                posiljkaPodaciF();
+                fileInput.style.display = 'none';
+                fileInputL.style.display = 'none';
+                textInput.style.display = 'none';
+                textarea.style.display = 'none';
+                hlink.style.display = 'none';
+            }
+        });      
+
+        //OSTALI DOM ELEMENTI I PODACI
+
+        fileInput.style.display = 'none';
+        textInput.style.display = 'none';
+
+        let slika = document.createElement('img');
+        let slikaW = 0;
+        let slikaH = 0;
+
+        let img1 = document.createElement('img');
+        //img1.setAttribute('src', 'images/prvaStrana.jpg');
+        let img1W = 1322;
+        let img1H = 1600;
+
+        let page = 1;
+
+        let boca = 0;
+        let kutija = 0;
+
+        let izrekeNiz = [];
+        let pitanjaNiz = [];
+        let brisiNiz = [];
+        let loadedPodaci = false;
+
+        const slikaDezena = document.createElement('img');
+
+        let podaci;
+        let posiljkaPodaci;
+        
+        let pressed = false;
+
+
+        function brisiNizF(a){
+            if(a == 1){
+                izrekeNiz.forEach((element, index) => {
+                    brisiNiz.push(element.id);
+                });
+                brisiIzrekuF(brisiNiz);
+            }else if(a == 2){
+                pitanjaNiz.forEach((element, index) => {
+                    brisiNiz.push(element.id);
+                });
+                brisiPitanjeF(brisiNiz);
+            }else if(a == 3){
+                pitanjaNiz.forEach((element, index) => {
+                    brisiNiz.push(element.id);
+                });
+                brisiIzazovF(brisiNiz);
+            }else if(a == 4){
+                porukePonudjene.forEach((element, index) => {
+                    if(element.checked){
+                        brisiNiz.push(element.id);
+                    }
+                });
+                brisiPorukuF(brisiNiz);
+            }
+        }
+
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    slika.setAttribute('src', event.target.result);
+                    slika.onload = function() {
+                        //daljeBtn.style.display = 'block';
+                        if(slika.naturalWidth > slika.naturalHeight){
+                            slikaW = dimension/1.4;
+                            slikaH = slika.naturalHeight/slika.naturalWidth * dimension/1.4;
+                        }else{
+                            slikaH = dimension/1.4;
+                            slikaW = slika.naturalWidth/slika.naturalHeight * dimension/1.4;
+                        }
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+
+        //BACKEND FUNKCIJE 
+
+    
+        async function posiljkaPodaciF(){
+            try {
+                const res = await fetch('/posiljkaPodaci' ,{
+                    method: 'POST',
+                    body: JSON.stringify({ime: 'nebitno'}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                posiljkaPodaci = data.user1;
+                posiljkaPodaci.forEach((element, index) => {
+                    const divce = document.createElement('div');
+                    divce.setAttribute('class', 'divcici');
+                    container.append(divce);
+                    const ime = document.createElement('h1');
+                    ime.innerHTML = 'Ime i prezime: '+ element.ime;
+                    divce.append(ime);
+                    const mesto = document.createElement('h1');
+                    mesto.innerHTML = 'Mesto: '+ element.mesto;
+                    divce.append(mesto);
+                    const ulica = document.createElement('h1');
+                    ulica.innerHTML = 'Ulica: '+ element.ulica;
+                    divce.append(ulica);
+                    const postanski = document.createElement('h1');
+                    postanski.innerHTML = 'Postanski kod: '+ element.postanski;
+                    divce.append(postanski);
+                    if(element.email){
+                        const email = document.createElement('h1');
+                        email.innerHTML = 'Email: '+ element.email;
+                        divce.append(email);
+                    }
+                    const tip = document.createElement('h1');
+                    tip.innerHTML = 'Tip proizvoda: '+ element.tip;
+                    divce.append(tip);
+                    const za = document.createElement('h1');
+                    za.innerHTML = 'Namenjeno za: '+ element.za;
+                    divce.append(za);
+                    const vreme = document.createElement('h1');
+                    vreme.innerHTML = 'Poruceno je: '+ element.vreme;
+                    divce.append(vreme);
+
+                    if(element.tip == 'kutija'){
+                        if(element.extenzija){
+                            const slikaK = document.createElement('img');
+                            slikaK.setAttribute('src', 'uploads/'+element._id+element.extenzija);
+                            slikaK.onload = function() {
+                                if(slikaK.naturalWidth >= slikaK.naturalHeight){
+                                    slikaK.style.width = '20cm';
+                                    slikaK.style.height = 20 * slikaK.naturalHeight/slikaK.naturalWidth + 'cm';
+                                }else if(slikaK.naturalWidth < slikaK.naturalHeight){
+                                    slikaK.style.height = '20cm';
+                                    slikaK.style.height = 20 * slikaK.naturalWidth/slikaK.naturalHeight + 'cm';
+                                }
+                            }
+                            divce.append(slikaK);
+                        }
+                        if(element.linkic){
+                            const linkic = document.createElement('h1');
+                            linkic.innerHTML = 'Link za pesmu/skrivena poruka: '+ element.linkic;
+                            divce.append(linkic);
+                        }
+                        const divce1 = document.createElement('div');
+                        divce1.setAttribute('class', 'divcici1');
+                        divce.append(divce1);
+                        const divce2 = document.createElement('div');
+                        divce2.setAttribute('class', 'divcici1');
+                        divce.append(divce2);
+                        const divce3 = document.createElement('div');
+                        divce3.setAttribute('class', 'divcici1');
+                        divce.append(divce3);
+                        const divce4 = document.createElement('div');
+                        divce4.setAttribute('class', 'divcici1');
+                        divce.append(divce4);
+                        
+                        if(element.izreke){
+                            element.izreke.forEach((element1, index1) => {
+                                const divS = document.createElement('div');
+                                divS.setAttribute('class', 'divcici2');
+                                divS.innerHTML = '<p>'+element1+'</p>';
+                                let boja1;
+                                let boja2;
+                                if(element1.length <= 50){ divS.style.fontSize = '12pt'; }//8+'mm'; }
+                                else if(element1.length <= 75){ divS.style.fontSize = '12pt'; }//7+'mm'; }
+                                else if(element1.length <= 100){ divS.style.fontSize = '12pt'; }//6+'mm'; }
+                                else if(element1.length <= 150){ divS.style.fontSize = '11pt'; }//5+'mm'; }
+                                else if(element1.length <= 200){ divS.style.fontSize = '10.5pt'; }//4+'mm'; }
+                                else if(element1.length <= 250){ divS.style.fontSize = '10pt'; }//3.5+'mm'; }
+                                if(element.za == 'otac' || element.za == 'drug' || element.za == 'brat'){
+                                    boja1 = '#00F';
+                                    boja2 = '#FF0';
+                                }else if(element.za == 'drugarica' || element.za == 'sestra'){
+                                    boja1 = '#F0C';
+                                    boja2 = '#FF0';;
+                                }else if(element.za == 'majka'){
+                                    boja1 = '#F0C';
+                                    boja2 = 'antiquewhite';
+                                }else if(element.za == 'partner'){
+                                    boja1 = '#F00';
+                                    boja2 = 'antiquewhite';
+                                }
+                                if (index1 % 2 === 0) {
+                                    //divS.style.backgroundColor = boja1;  '1px solid rgba(0,0,0,0.7)';
+                                    divS.style.backgroundColor = '#FFF';
+                                    divS.style.borderTop = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderLeft = '1px solid rgba(0,0,0,1)';
+                                    divS.style.borderRight = '1px solid rgba(0,0,0,1)';
+                                    divS.style.boxSizing = 'border-box';
+                                }else{
+                                    //divS.style.backgroundColor = boja2;
+                                    divS.style.backgroundColor = '#FFF';
+                                    divS.style.borderTop = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderLeft = '1px solid rgba(0,0,0,1)';
+                                    divS.style.borderRight = '1px solid rgba(0,0,0,1)';
+                                    divS.style.boxSizing = 'border-box';
+                                }
+                                if(index1 < 18){
+                                    divce1.append(divS);
+                                }else if(index1 >= 18 && index1 < 30){
+                                    divce2.append(divS);
+                                }
+                            });
+                        }
+                        if(element.pitanja){
+                            element.pitanja.forEach((element1, index1) => {
+                                const divS = document.createElement('div');
+                                divS.setAttribute('class', 'divcici2');
+                                divS.innerHTML = '<p>'+element1+'</p>';
+                                let boja1;
+                                let boja2;
+                                if(element1.length <= 50){ divS.style.fontSize = '12pt'; }//8+'mm'; }
+                                else if(element1.length <= 75){ divS.style.fontSize = '12pt'; }//7+'mm'; }
+                                else if(element1.length <= 100){ divS.style.fontSize = '12pt'; }//6+'mm'; }
+                                else if(element1.length <= 150){ divS.style.fontSize = '12pt'; }//5+'mm'; }
+                                else if(element1.length <= 200){ divS.style.fontSize = '12pt'; }//4+'mm'; }
+                                else if(element1.length <= 250){ divS.style.fontSize = '11pt'; }//3.5+'mm'; }
+                                if(element.za == 'otac' || element.za == 'drug' || element.za == 'brat'){
+                                    boja1 = '#00F';
+                                    boja2 = '#FF0';
+                                }else if(element.za == 'drugarica' || element.za == 'sestra'){
+                                    boja1 = '#F0C';
+                                    boja2 = '#FF0';;
+                                }else if(element.za == 'majka'){
+                                    boja1 = '#F0C';
+                                    boja2 = 'antiquewhite';
+                                }else if(element.za == 'partner'){
+                                    boja1 = '#F00';
+                                    boja2 = 'antiquewhite';
+                                }
+                                if (index1 % 2 === 0) {
+                                    //divS.style.backgroundColor = boja1;
+                                    divS.style.backgroundColor = '#FFF';
+                                    divS.style.borderTop = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderLeft = '1px solid rgba(0,0,0,1)';
+                                    divS.style.borderRight = '1px solid rgba(0,0,0,1)';
+                                    divS.style.boxSizing = 'border-box';
+                                }else{
+                                    //divS.style.backgroundColor = boja2;
+                                    divS.style.backgroundColor = '#FFF';
+                                    divS.style.borderTop = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderBottom = '1px solid rgba(0,0,0,0.1)';
+                                    divS.style.borderLeft = '1px solid rgba(0,0,0,1)';
+                                    divS.style.borderRight = '1px solid rgba(0,0,0,1)';
+                                    divS.style.boxSizing = 'border-box';
+                                }
+                                if(index1 < 18){
+                                    divce3.append(divS);
+                                }else if(index1 >= 18 && index1 < 30){
+                                    divce4.append(divS);
+                                }
+                            });
+                        }
+                        const SkiniPDF = document.createElement('button');
+                        SkiniPDF.setAttribute('class', 'pdfDugme');
+                        SkiniPDF.innerHTML = 'SkiniPDF';
+                        SkiniPDF.addEventListener('click', (e) => { 
+                            createPDFFromDivs(divce1, divce2, divce3, divce4)
+                           // generatePDF(divce1, divce2, divce3,divce4); 
+                        });
+                        divce.append(SkiniPDF);
+                        
+                    }else if(element.tip == 'boca'){
+                        if(element.dezen){
+                            const slikaK = document.createElement('img');
+                            slikaK.setAttribute('src', 'uploads/'+element.dezen);
+                            slikaK.onload = function() {
+                                if(slikaK.naturalWidth >= slikaK.naturalHeight){
+                                    slikaK.style.width = '20cm';
+                                    slikaK.style.height = 20 * slikaK.naturalHeight/slikaK.naturalWidth + 'cm';
+                                }else if(slikaK.naturalWidth < slikaK.naturalHeight){
+                                    slikaK.style.height = '20cm';
+                                    slikaK.style.height = 20 * slikaK.naturalWidth/slikaK.naturalHeight + 'cm';
+                                }
+                            }
+                            divce.append(slikaK);
+                        }
+                        if(element.poruka){
+                            const porukaN = document.createElement('h1');
+                            porukaN.innerHTML = 'Poruka glasi:';
+                            divce.append(porukaN);
+                            const poruka = document.createElement('p');
+                            poruka.style.whiteSpace = "pre-wrap";
+                            poruka.innerHTML = element.poruka;
+                            divce.append(poruka);
+                        }
+                    }
+                    
+                    const brisko = document.createElement('button');
+                    brisko.setAttribute('class', 'pdfDugme');
+                    brisko.innerHTML = 'OBRISI';
+                    brisko.addEventListener('click', (e) => { posiljkaBrisiF(element._id); });
+                    divce.append(brisko);
+                });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        
+        
+        async function podaciF(){
+            try {
+                const res = await fetch('/podaci' ,{
+                    method: 'POST',
+                    body: JSON.stringify({ime: 'nebitno'}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                podaci = data;
+                loadedPodaci = true;
+                refreshPodatke();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        podaciF();
+
+
+        async function brisiIzrekuF(id){
+            try {
+                const res = await fetch('/brisiIzreku' ,{
+                    method: 'POST',
+                    body: JSON.stringify({id: id}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                container.innerHTML = '';
+                setTimeout(podaciF, 150);
+                setTimeout(posiljkaPodaciF, 200);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        async function brisiPitanjeF(id){
+            try {
+                const res = await fetch('/brisiPitanje' ,{
+                    method: 'POST',
+                    body: JSON.stringify({id: id}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                container.innerHTML = '';
+                setTimeout(podaciF, 150);
+                setTimeout(posiljkaPodaciF, 200);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        async function brisiIzazovF(id){
+            try {
+                const res = await fetch('/brisiIzazov' ,{
+                    method: 'POST',
+                    body: JSON.stringify({id: id}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                container.innerHTML = '';
+                setTimeout(podaciF, 150);
+                setTimeout(posiljkaPodaciF, 200);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        async function brisiPorukuF(id){
+            try {
+                const res = await fetch('/brisiPoruku' ,{
+                    method: 'POST',
+                    body: JSON.stringify({id: id}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                container.innerHTML = '';
+                setTimeout(podaciF, 150);
+                setTimeout(posiljkaPodaciF, 200);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        
+        async function adminPanelIzrekeF(izreke, za){ 
+            try {
+                const res = await fetch('/adminPanelIzreke' ,{
+                    method: 'POST',
+                    body: JSON.stringify({ izreke: izreke, za: za}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                podaciF();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        async function adminPanelPitanjaF(pitanja, za){ 
+            try {
+                const res = await fetch('/adminPanelPitanja' ,{
+                    method: 'POST',
+                    body: JSON.stringify({ pitanja: pitanja, za: za}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                podaciF();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        async function adminPanelPorukeF(poruke, za){ 
+            try {
+                const res = await fetch('/adminPanelPoruke' ,{
+                    method: 'POST',
+                    body: JSON.stringify({ poruke: poruke, za: za}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                podaciF();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        let controller = new AbortController();
+        async function posiljka(ime, 
+                                mesto, 
+                                ulica, 
+                                postanski, 
+                                telefon,
+                                email, 
+                                izreke, 
+                                pitanja, 
+                                poruka,
+                                dezen,
+                                linkic,
+                                vreme,
+                                tip,
+                                za
+                            ){
+            try {
+                const res = await fetch('/posiljka' ,{
+                    method: 'POST',
+                    body: JSON.stringify({
+                        ime: ime,
+                        mesto: mesto,
+                        ulica: ulica,
+                        postanski: postanski,
+                        telefon: telefon,
+                        email: email,
+                        izreke: izreke,
+                        pitanja: pitanja,
+                        poruka: poruka,
+                        dezen: dezen,
+                        linkic: linkic,
+                        vreme: vreme,
+                        tip: tip,
+                        za: za
+                    }),
+                    headers:{'Content-Type': 'application/json'},
+                    signal: controller.signal
+                });
+                const data = await res.json();
+
+                if(poklon.tip == 'kutija'){
+                    page = 11;
+                }else if(poklon.tip == 'boca'){
+                    page = 10;
+                }
+                formContainer.style.display = 'none';
+
+                const id = data.user1._id;
+                
+                const file = fileInput.files[0];
+                const formData = new FormData();
+                formData.append('file.nameOdInputa', file);
+                const res1 = await fetch(`/upload?id=${id}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data1 = await res1.json();
+            } catch (err) {
+                if(poklon.tip == 'kutija' && page == 10 || poklon.tip == 'boca' && page == 9 && err.name != 'AbortError'){
+                    omoguci = 1;
+                    alert('Doslo je do greske prilikom slanja pokusajte ponovo za par sekundi i proverite konekciju sa internetom');
+                    console.log('greskica');
+                }
+            }
+        }
+        
+
+        async function posiljkaBrisiF(id){ 
+            try {
+                const res = await fetch('/posiljkaBrisi' ,{
+                    method: 'POST',
+                    body: JSON.stringify({id: id}),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                container.innerHTML = '';
+                setTimeout(posiljkaPodaciF, 200);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        
+
+        //DEZEN
+
+        async function dezenF(ime){
+            try {
+                const res = await fetch('/dezen' ,{
+                    method: 'POST',
+                    body: JSON.stringify({
+                        ime: ime
+                    }),
+                    headers:{'Content-Type': 'application/json'}
+                });
+                const data = await res.json();
+                console.log(data);
+                const id = data.dezen._id;
+                
+                const file = fileInput.files[0];
+                const formData = new FormData();
+                formData.append('file.nameOdInputa', file);
+                const res1 = await fetch(`/uploadAdmin?id=${id}`, {
+                    method: 'POST',
+                    body: formData
+                });
+                const data1 = await res1.json();
+                podaciF();
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        async function dezenBrisiF(id){ 
+            try {
+                const res = await fetch('/dezenBrisi' ,{
+                    method: 'POST',
+                    body: JSON.stringify({id: id}),
+                    headers:{'Content-Type': 'application/json'}
+                });  
+                podaciF();              
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        let poklon = { tip: false, za: false };
+
+        //FUNKCIJA ZA TEKST
+
+        function pisi(x, y, divWidth, divHeight, fontSize, message) {
+            if(poklon.tip == 'kutija'){
+                ctx.font = "Italic 400 "+ fontSize +"px 'Noto Serif', serif";
+            }else if(poklon.tip == 'boca'){
+                ctx.font = "Italic 300 "+ fontSize +"px 'Noto Serif', serif";
+            }else{
+                ctx.font = "Italic 300 "+ fontSize +"px serif";
+            }
+            ctx.textBaseline = 'top';  
+            
+            const maxWidth = divWidth - 20;  
+
+            let words = message.split(' ');
+            let lines = [];
+            let currentLine = '';
+
+            for (let i = 0; i < words.length; i++) {
+                let word = words[i];
+                let testLine = currentLine ? currentLine + ' ' + word : word;
+                
+                if (ctx.measureText(testLine).width <= maxWidth) {
+                    currentLine = testLine;
+                } else {
+                    lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+
+            if (currentLine) {
+                lines.push(currentLine);
+            }
+
+            let totalTextHeight = lines.length * fontSize * 1.2;
+            let startY = y + (divHeight - totalTextHeight) / 2;  
+
+            lines.forEach((line, index) => {
+                const lineWidth = ctx.measureText(line).width;
+                const startX = x + (divWidth - lineWidth) / 2;  
+                ctx.fillText(line, startX, startY + index * fontSize * 1.2);
+            });
+        }
+
+
+        function pisi2(x, y, divWidth, divHeight, fontSize, message) {
+            if (poklon.tip == 'kutija') {
+                ctx.font = "Italic 400 " + fontSize + "px 'Noto Serif', serif";
+            } else if (poklon.tip == 'boca') {
+                ctx.font = "Italic 300 " + fontSize + "px 'Noto Serif', serif";
+            } else {
+                ctx.font = "Italic 300 " + fontSize + "px serif";
+            }
+            ctx.textBaseline = 'top';
+
+            const maxWidth = divWidth - 20;
+
+            let lines = message.split('\n');
+            let finalLines = [];
+
+            lines.forEach(line => {
+                let words = line.split(' ');
+                let currentLine = '';
+
+                words.forEach(word => {
+                    let testLine = currentLine ? currentLine + ' ' + word : word;
+                    
+                    if (ctx.measureText(testLine).width <= maxWidth) {
+                        currentLine = testLine;
+                    } else {
+                        finalLines.push(currentLine);
+                        currentLine = word;
+                    }
+                });
+
+                if (currentLine) {
+                    finalLines.push(currentLine);
+                }
+            });
+
+            let totalTextHeight = finalLines.length * fontSize * 1.2;
+            let startY = y + (divHeight - totalTextHeight) / 2;
+
+            finalLines.forEach((line, index) => {
+                const lineWidth = ctx.measureText(line).width;
+                const startX = x + (divWidth - lineWidth) / 2;
+                ctx.fillText(line, startX, startY + index * fontSize * 1.2);
+            });
+        }
+
+
+        
+        
+        //CANVAS 
+
+        let action = false;
+
+        let slw;
+        let slh;
+        let slx;
+        let sly;
+
+        let mPW;
+        let mPH;
+        let vPW;
+        let vPH;
+
+        let mPW1;
+        let mPH1;
+        let vPW1;
+        let vPH1; 
+
+        let bocaPressed = false;
+        let kutijaPressed = false;
+        let k1pressed = false;
+        let k2pressed = false;
+        let k3pressed = false;
+        let k4pressed = false;
+        let k5pressed = false;
+        let k6pressed = false;
+        let k7pressed = false;
+
+        let p1pressed = false;
+        let p2pressed = false;
+        let p3pressed = false;
+        let p4pressed = false;
+        let p5pressed = false;
+        let p6pressed = false;
+        let p7pressed = false;
+
+        let dodajPpressed = false;
+
+        let lift = 0;
+        let slovoD = 1;
+
+    
+
+        let izrekePonudjene = [];
+        let pitanjaPonudjena = [];
+        let izazoviPonudjeni = [];
+        let porukePonudjene = [];
+        let dezeniPonudjeni = [];
+        let izrekeIzabrane = [];
+        let stranica = 1;
+
+        //SLIKE CANVAS
+
+        const pozadinaK = document.createElement('img');
+        pozadinaK.setAttribute('src', 'images/pozadine/pozadinaK.jpg');
+        const pozadinaB = document.createElement('img');
+        pozadinaB.setAttribute('src', 'images/pozadine/pozadinaB.png');
+
+        const bocaU1 = document.createElement('img');
+        bocaU1.setAttribute('src', 'images/bocaU1.png');
+        const bocaU2 = document.createElement('img');
+        bocaU2.setAttribute('src', 'images/bocaU2.png');
+        const bocaU3 = document.createElement('img');
+        bocaU3.setAttribute('src', 'images/bocaU3.png');
+        const bocaU4 = document.createElement('img');
+        bocaU4.setAttribute('src', 'images/bocaU4.png');
+
+        const formaB = document.createElement('img');
+        formaB.setAttribute('src', 'images/formaB.png');
+
+        const kutijaU4 = document.createElement('img');
+        kutijaU4.setAttribute('src', 'images/kutijaU4.png');
+
+        const biranje = document.createElement('img');
+        biranje.setAttribute('src', 'images/biranje.png');
+        const zaBoca = document.createElement('img');
+        zaBoca.setAttribute('src', 'images/zaBoca.png');
+        const zaKutija = document.createElement('img');
+        zaKutija.setAttribute('src', 'images/zaKutija.png');
+
+        const zaOca = document.createElement('img');
+        zaOca.setAttribute('src', 'images/kutije/zaOca.png');
+        const zaMajku = document.createElement('img');
+        zaMajku.setAttribute('src', 'images/kutije/zaMajku.png');
+        const zaSestru = document.createElement('img');
+        zaSestru.setAttribute('src', 'images/kutije/zaSestru.png');
+        const zaBrata = document.createElement('img');
+        zaBrata.setAttribute('src', 'images/kutije/zaBrata.png');
+        const zaDrugaricu = document.createElement('img');
+        zaDrugaricu.setAttribute('src', 'images/kutije/zaDrugaricu.png');
+        const zaDruga = document.createElement('img');
+        zaDruga.setAttribute('src', 'images/kutije/zaDruga.png');
+        const zaPartnera = document.createElement('img');
+        zaPartnera.setAttribute('src', 'images/kutije/zaPartnera.png');
+
+        let kutije = [
+            {
+                za: 'partner',
+                x: 0,
+                yy: 0.5,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'otac',
+                x: 0,
+                yy: 0.5,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'brat',
+                x: 0,
+                yy: 0.8,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'drug',
+                x: 0,
+                yy: 1.1,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'sestra',
+                x: 0,
+                yy: 1.4,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'drugarica',
+                x: 0,
+                yy: 1.7,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'majka',
+                x: 0,
+                yy: 2,
+                ww: 1,
+                hh: 1,
+                w: 0,
+                h: 0
+            }
+        ];
+
+
+
+        //const srce = document.createElement('img');
+        //srce.setAttribute('src', 'images/srce.png');
+
+        const srce1 = document.createElement('img');
+        srce1.setAttribute('src', 'images/srce1.png');
+        const srce2 = document.createElement('img');
+        srce2.setAttribute('src', 'images/srce2.png');
+        const srce3 = document.createElement('img');
+        srce3.setAttribute('src', 'images/srce3.png');
+
+        const zaFotografije = document.createElement('img');
+        zaFotografije.setAttribute('src', 'images/zaFotografije.png');
+        const zStranaB = document.createElement('img');
+        zStranaB.setAttribute('src', 'images/zStranaB.png');
+        const zStranaK = document.createElement('img');
+        zStranaK.setAttribute('src', 'images/zStranaK.png');
+
+        const dodajP = document.createElement('img');
+        dodajP.setAttribute('src', 'images/dodajP.png');
+        const stiklic = document.createElement('img');
+        stiklic.setAttribute('src', 'images/stiklic.png');
+
+        const p2kutije = document.createElement('img');
+        p2kutije.setAttribute('src', 'images/p2kutije.png');
+
+        const dalje = {
+            X: 0,
+            XX: 0,
+            Y: 0,
+            W: 0,
+            H: 0,
+            pressed: false,
+            npressed: false,
+            ppressed: false
+        }
+
+        
+        const papir = document.createElement('img');
+        papir.setAttribute('src', 'images/papir.png');
+        const stariPapir = document.createElement('img');
+        stariPapir.setAttribute('src', 'images/stariPapir.png');
+
+        const bez = document.createElement('img');
+        bez.setAttribute('src', 'images/poruke/bez.png');
+        const plavi = document.createElement('img');
+        plavi.setAttribute('src', 'images/poruke/plavi.png');
+        const crveni = document.createElement('img');
+        crveni.setAttribute('src', 'images/poruke/crveni.png');
+        const roze = document.createElement('img');
+        roze.setAttribute('src', 'images/poruke/roze.png');
+        const zuti = document.createElement('img');
+        zuti.setAttribute('src', 'images/poruke/zuti.png');
+        const porukaSL = document.createElement('img');
+        porukaSL.setAttribute('src', 'images/poruke/poruka.png');
+
+        const ramZaSliku = document.createElement('img');
+        ramZaSliku.setAttribute('src', 'images/ramZaSliku.png');
+
+        const daljeSL = document.createElement('img');
+        daljeSL.setAttribute('src', 'images/dalje.png');
+        const nazadSL = document.createElement('img');
+        nazadSL.setAttribute('src', 'images/nazad.png');
+        const poruciSL = document.createElement('img');
+        poruciSL.setAttribute('src', 'images/poruci.png');
+
+/*
+        const arc1 = document.createElement('img');
+        arc1.setAttribute('src', 'images/arc/arc1.png');
+        const arc2 = document.createElement('img');
+        arc2.setAttribute('src', 'images/arc/arc2.png');
+        const arc3 = document.createElement('img');
+        arc3.setAttribute('src', 'images/arc/arc3.png');
+        const arc4 = document.createElement('img');
+        arc4.setAttribute('src', 'images/arc/arc4.png');
+        const arc5 = document.createElement('img');
+        arc5.setAttribute('src', 'images/arc/arc5.png');
+        const arc6 = document.createElement('img');
+        arc6.setAttribute('src', 'images/arc/arc6.png');
+        const arc7 = document.createElement('img');
+        arc7.setAttribute('src', 'images/arc/arc7.png');
+        let arc = 0;
+
+        const confetti = document.createElement('img');
+        confetti.setAttribute('src', 'images/confetti.png');
+*/      
+
+        let boce = [
+            {
+                za: 'partner',
+                x: 0,
+                yy: 0.2,
+                ww: 1060/1000,
+                hh: 573/1000,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'otac',
+                x: 0,
+                yy: 0.5,
+                ww: 1060/1000/1.1,
+                hh: 573/1000/1.1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'brat',
+                x: 0,
+                yy: 0.8,
+                ww: 1060/1000,
+                hh: 573/1000,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'drug',
+                x: 0,
+                yy: 1.1,
+                ww: 1060/1000/1.1,
+                hh: 573/1000/1.1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'sestra',
+                x: 0,
+                yy: 1.4,
+                ww: 1060/1000,
+                hh: 573/1000,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'drugarica',
+                x: 0,
+                yy: 1.7,
+                ww: 1060/1000/1.1,
+                hh: 573/1000/1.1,
+                w: 0,
+                h: 0
+            },
+            {
+                za: 'majka',
+                x: 0,
+                yy: 2,
+                ww: 1060/1000,
+                hh: 573/1000,
+                w: 0,
+                h: 0
+            }
+        ];
+
+        function refreshPodatke(){
+            izrekePonudjene = [];
+            pitanjaPonudjena = [];
+            porukePonudjene = [];
+            dezeniPonudjeni = [];
+            izrekeNiz = [];
+            pitanjaNiz = [];
+            let intPodaci = setInterval(() => {
+                if(loadedPodaci){
+                    let iindex = -1;
+                    let pindex = -1;
+                    let poindex = -1;
+                    podaci.izreke.forEach((element, index) => {
+                        if(element.za == poklon.za){
+                            iindex++;
+                            let mesto;
+                            let yy;
+                            let boja1 = plavi;
+                            let boja2 = zuti;
+                            if(iindex % 2 === 0){
+                                mesto = 1;
+                                yy = iindex * 0.2 + 0.52;
+                            }else{
+                                mesto = 2;
+                                yy = iindex * 0.2 - 0.2 + 0.52;
+                            }
+
+                            izrekePonudjene.push({
+                                mesto: mesto, 
+                                w: 0.3 * dimension,
+                                h: 0.3 * dimension,
+                                x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                                yy: yy,
+                                mess: element.izreke,
+                                id: element._id,
+                                action: false,
+                                boja1: boja1,
+                                boja2: boja2,
+                                boja: boja1,
+                                checked: false
+                            });
+                        }
+                    });
+
+                    
+                    podaci.pitanja.forEach((element, index) => {
+                        if(element.za == poklon.za){
+                            pindex++;
+                            let mesto;
+                            let yy;
+                            let boja1 = plavi;
+                            let boja2 = zuti;
+                            if(pindex % 2 === 0){
+                                mesto = 1;
+                                yy = pindex * 0.2 + 0.52;
+                            }else{
+                                mesto = 2;
+                                yy = pindex * 0.2 - 0.2 + 0.52;
+                            }
+
+                            pitanjaPonudjena.push({
+                                mesto: mesto, 
+                                w: 0.3 * dimension,
+                                h: 0.3 * dimension,
+                                x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                                yy: yy,
+                                mess: element.pitanja,
+                                id: element._id,
+                                action: false,
+                                boja1: boja1,
+                                boja2: boja2,
+                                boja: boja1,
+                                checked: false
+                            });
+                        }
+                    });
+                    
+
+
+
+                    podaci.poruke.forEach((element, index) => {
+                        if(element.za == poklon.za){
+                            poindex++;
+                            let mesto;
+                            let yy;
+                            if(poindex % 2 === 0){
+                                mesto = 1;
+                                //yy = index * 0.15 - 0.1;
+                                yy = poindex * 0.35 - 0.1 + 0.35;
+                            }else{
+                                mesto = 2;
+                                //yy = index * 0.15 - 0.15 - 0.1;
+                                yy = poindex * 0.35 - 0.1 + 0.35;
+                            }
+
+                            porukePonudjene.push({
+                                mesto: mesto, 
+                                w: 0.3 * dimension,
+                                h: 0.3 * dimension,
+                                x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                                yy: yy,
+                                mess: element.poruke,
+                                id: element._id,
+                                action: false,
+                                checked: false
+                            });
+                        }
+                    });
+
+
+
+
+                    
+
+                    
+                    let indexic = 0;
+                    podaci.dezeni.forEach((element, index) => {
+                        fetch('uploads/'+element._id+element.extenzija, { method: 'HEAD' }) 
+                        .then(response => {
+                            if (response.ok) {
+                                //console.log("Slika postoji!");
+                                let mesto;
+                                let yy;
+                                if(indexic % 2 === 0){
+                                    mesto = 1;
+                                    yy = indexic * 0.22 + 0.47;
+                                }else{
+                                    mesto = 2;
+                                    yy = indexic * 0.22 - 0.22 + 0.47;
+                                }
+                                indexic++;
+                        
+                                dezeniPonudjeni.push({
+                                    mesto: mesto, 
+                                    w: 0.3 * dimension,
+                                    h: 0.3 * dimension,
+                                    x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                                    yy: yy,
+                                    id: element._id,
+                                    extenzija: element.extenzija,
+                                    slika: (() => {
+                                        const img = document.createElement('img');
+                                        img.setAttribute('src', 'uploads/' + element._id + element.extenzija);
+                                        return img;
+                                    })(),
+                                    action: false,
+                                    checked: false
+                                });
+
+                                } else {
+                                console.log("Slika ne postoji.");
+                                if(userID == 'Andreja'){ 
+                                    //dezenBrisiF(element._id); 
+                                }
+                            }
+                        })
+                        .catch((error) => {
+                            console.log("Greška u pristupu slici:", error);
+                        });
+                    });
+                                                                  
+                    setInterval(draw, 1000/60);
+                    clearInterval(intPodaci);
+                }
+            }, 200);
+        }
+        refreshPodatke();
+
+        //FUNKCIJA ZA JEDINSTVEN NIZ
+
+        function filterUniqueImages(niz) {
+            const seen = new Set();  
+
+            return niz.filter(element => {
+                const src = element.slika.src;
+                if (!seen.has(src)) {
+                    seen.add(src);  
+                    return true;  
+                }
+                return false;
+            });
+        }
+
+        
+        function filterUniqueArrays(niz) {
+            const seen = new Set();  
+
+            return niz.filter(element => {
+                const id = element.id;
+                if (!seen.has(id)) {
+                    seen.add(id);  
+                    return true;  
+                }
+                return false;
+            });
+        }
+        
+        
+
+        let intSet = setInterval(() => {
+            if(dezeniPonudjeni){
+                dezeniPonudjeni = filterUniqueImages(dezeniPonudjeni);
+            }
+            if(pitanjaPonudjena){
+                pitanjaPonudjena = filterUniqueArrays(pitanjaPonudjena);
+            }
+            if(porukePonudjene){
+                porukePonudjene = filterUniqueArrays(porukePonudjene);
+            }
+            if(izrekePonudjene){
+                izrekePonudjene = filterUniqueArrays(izrekePonudjene);
+            }
+        }, 100);
+        
+        let bocaX;
+        let bocaY;
+        let bocaW;
+        let bocaH;
+        let kutijaX;
+        let kutijaY;
+        let kutijaW;
+        let kutijaH;
+        
+        
+        function draw(){
+
+
+            if(poklon.tip == 'boca'){
+                body.style.cssText = "font-family: 'Noto Serif Light', 'Noto Serif', serif; font-weight: 300; font-style: italic;";
+            }else{
+                body.style.cssText = "font-family: 'Noto Serif', serif; font-weight: 400; font-style: italic;";
+            }
+            
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            canvas1.width = window.innerWidth;
+            canvas1.height = window.innerHeight;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            
+
+            if(window.innerHeight <= window.innerWidth){  
+                dimension = window.innerHeight;
+            }else if(window.innerHeight > window.innerWidth){  
+                dimension = window.innerWidth;
+            }
+
+            const odnos = window.innerWidth/window.innerHeight;
+            let odnos1;
+            if(!poklon.tip || poklon.tip == 'kutija'){
+                odnos1 = 3968/4800;
+            }else if(poklon.tip == 'boca'){
+                odnos1 = 1;
+            }
+            let p1W;
+            let p1H;
+            if(odnos >= odnos1){
+                if(!poklon.tip || poklon.tip == 'kutija'){
+                    p1W = window.innerWidth;
+                    p1H = window.innerWidth * 4800/3968;
+                    ctx.drawImage(pozadinaK, window.innerWidth/2 - p1W/2, window.innerHeight/2 - p1H/2, p1W, p1H);
+                }else if(poklon.tip == 'boca'){
+                    p1W = window.innerWidth;
+                    p1H = window.innerWidth;
+                    ctx.drawImage(pozadinaB, window.innerWidth/2 - p1W/2, window.innerHeight/2 - p1H/2, p1W, p1H);
+                }
+            }else if(odnos < odnos1){
+                if(!poklon.tip || poklon.tip == 'kutija'){
+                    p1W = window.innerHeight * 3968/4800;
+                    p1H = window.innerHeight;
+                    ctx.drawImage(pozadinaK, window.innerWidth/2 - p1W/2, window.innerHeight/2 - p1H/2, p1W, p1H);
+                }else if(poklon.tip == 'boca'){
+                    p1W = window.innerHeight;
+                    p1H = window.innerHeight;
+                    ctx.drawImage(pozadinaB, window.innerWidth/2 - p1W/2, window.innerHeight/2 - p1H/2, p1W, p1H);
+                }
+            }
+
+            if(page == 1){
+                const kf1 = window.innerHeight/dimension * 60;
+
+                const biranjeX = window.innerWidth/2;
+                const biranjeY = 0.2 * window.innerHeight;
+                const biranjeW = 1621/1000 * (dimension/3 + kf1);
+                const biranjeH = 1080/1000 * (dimension/3 + kf1);
+                ctx.drawImage(biranje, biranjeX - biranjeW/2, biranjeY - biranjeH/2, biranjeW, biranjeH);
+
+                bocaX;
+                bocaY;
+                if(window.innerWidth >= window.innerHeight/1.3){
+                    bocaX = window.innerWidth/2 - dimension/2 + dimension * 0.2;
+                    bocaY = 0.6 * window.innerHeight;
+                    bocaW = 1196/1000 * dimension/3;
+                    bocaH = 1080/1000 * dimension/3;
+                }else{
+                    bocaX = window.innerWidth/2;
+                    bocaY = 0.75 * window.innerHeight;
+                    bocaW = 1196/1000 * (dimension/3 + kf1);
+                    bocaH = 1080/1000 * (dimension/3 + kf1);
+                }
+                if(bocaPressed){
+                    ctx.drawImage(zaBoca, bocaX - bocaW/2 * 0.95, bocaY - bocaH/2 * 0.95, bocaW * 0.95, bocaH * 0.95);
+                }else{
+                    ctx.drawImage(zaBoca, bocaX - bocaW/2, bocaY - bocaH/2, bocaW, bocaH);
+                }
+
+                if(window.innerWidth >= window.innerHeight/1.3){
+                    kutijaX = window.innerWidth/2 - dimension/2 + dimension * 0.8;
+                    kutijaY = 0.6 * window.innerHeight;
+                    kutijaW = 1196/1000 * dimension/3;
+                    kutijaH = 1080/1000 * dimension/3;
+                }else{
+                    kutijaX = window.innerWidth/2;
+                    kutijaY = 0.47 * window.innerHeight;
+                    kutijaW = 1196/1000 * (dimension/3 + kf1);
+                    kutijaH = 1080/1000 * (dimension/3 + kf1);
+                }
+                
+                if(kutijaPressed){
+                    ctx.drawImage(zaKutija, kutijaX - kutijaW/2 * 0.95, kutijaY - kutijaH/2 * 0.95, kutijaW * 0.95, kutijaH * 0.95);
+                }else{
+                    ctx.drawImage(zaKutija, kutijaX - kutijaW/2, kutijaY - kutijaH/2, kutijaW, kutijaH);
+                }
+
+            }else if(page == 2 && poklon.tip == 'kutija'){
+
+                kutije.forEach((element, index) => {
+                    if(index != 0){
+                        kutije[index].yy = kutije[index-1].yy + 0.4;
+                    }
+                    kutije[index].x = window.innerWidth/2;
+                    kutije[index].y = element.yy * window.innerHeight * 0.9;
+                    kutije[index].w = element.ww * window.innerHeight/2 * 0.9;
+                    kutije[index].h = element.hh * window.innerHeight/2 * 0.9;
+                });
+                ctx.drawImage( p2kutije, kutije[0].x - kutije[0].w/2, 0, kutije[0].w, kutije[0].w * 1080/1621);
+                ctx.save();
+                ctx.rect(kutije[0].x - kutije[0].w/2, window.innerHeight/3.8, kutije[0].w, window.innerHeight);
+                ctx.clip();
+                if(k1pressed){
+                    ctx.drawImage(zaPartnera, kutije[0].x - kutije[0].w/2 * 0.9, kutije[0].y - kutije[0].h/2 * 0.9, kutije[0].w * 0.9, kutije[0].h * 0.9);
+                }else{
+                    ctx.drawImage(zaPartnera, kutije[0].x - kutije[0].w/2, kutije[0].y - kutije[0].h/2, kutije[0].w, kutije[0].h);
+                }
+                if(k2pressed){
+                    ctx.drawImage(zaMajku, kutije[1].x - kutije[1].w/2 * 0.9, kutije[1].y - kutije[1].h/2 * 0.9, kutije[1].w * 0.9, kutije[1].h * 0.9);
+                }else{
+                    ctx.drawImage(zaMajku, kutije[1].x - kutije[1].w/2, kutije[1].y - kutije[1].h/2, kutije[1].w, kutije[1].h);
+                }
+                if(k3pressed){
+                    ctx.drawImage(zaOca, kutije[2].x - kutije[2].w/2 * 0.9, kutije[2].y - kutije[2].h/2 * 0.9, kutije[2].w * 0.9, kutije[2].h * 0.9);
+                }else{
+                    ctx.drawImage(zaOca, kutije[2].x - kutije[2].w/2, kutije[2].y - kutije[2].h/2, kutije[2].w, kutije[2].h);
+                }
+                if(k4pressed){
+                    ctx.drawImage(zaSestru, kutije[3].x - kutije[3].w/2 * 0.9, kutije[3].y - kutije[3].h/2 * 0.9, kutije[3].w * 0.9, kutije[3].h * 0.9);
+                }else{
+                    ctx.drawImage(zaSestru, kutije[3].x - kutije[3].w/2, kutije[3].y - kutije[3].h/2, kutije[3].w, kutije[3].h);
+                }
+                if(k5pressed){
+                    ctx.drawImage(zaBrata, kutije[4].x - kutije[4].w/2 * 0.9, kutije[4].y - kutije[4].h/2 * 0.9, kutije[4].w * 0.9, kutije[4].h * 0.9);
+                }else{
+                    ctx.drawImage(zaBrata, kutije[4].x - kutije[4].w/2, kutije[4].y - kutije[4].h/2, kutije[4].w, kutije[4].h);
+                }
+                if(k6pressed){
+                    ctx.drawImage(zaDrugaricu, kutije[5].x - kutije[5].w/2 * 0.9, kutije[5].y - kutije[5].h/2 * 0.9, kutije[5].w * 0.9, kutije[5].h * 0.9);
+                }else{
+                    ctx.drawImage(zaDrugaricu, kutije[5].x - kutije[5].w/2, kutije[5].y - kutije[5].h/2, kutije[5].w, kutije[5].h);
+                }
+                if(k7pressed){
+                    ctx.drawImage(zaDruga, kutije[6].x - kutije[6].w/2 * 0.9, kutije[6].y - kutije[6].h/2 * 0.9, kutije[6].w * 0.9, kutije[6].h * 0.9);
+                }else{
+                    ctx.drawImage(zaDruga, kutije[6].x - kutije[6].w/2, kutije[6].y - kutije[6].h/2, kutije[6].w, kutije[6].h);
+                }
+                ctx.restore();
+
+                dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                dalje.Y = window.innerHeight * 0.93;
+                dalje.W = dimension * 0.24;
+                dalje.H = dimension * 0.087;
+                if(poklon.za){
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }
+                
+                if(dalje.npressed){
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+
+            }else if(page == 3 && poklon.tip == 'kutija'){
+                const kf1 = window.innerHeight/dimension * 100;
+                const x = window.innerWidth/2;
+                const y = window.innerHeight/2;
+                const w = dimension/1.25 + kf1;
+                const h = dimension/1.25 + kf1;
+                ctx.drawImage(srce1, x - w/2, y - h/2, w, h);
+
+                dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                dalje.Y = window.innerHeight * 0.93;
+                dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                dalje.W = dimension * 0.24;
+                dalje.H = dimension * 0.087;
+
+                if(dalje.pressed){
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+                
+                if(dalje.npressed){
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+                
+            }else if(page == 4 && poklon.tip == 'kutija'){
+                
+                const porukaSLX = window.innerWidth/2;
+                const porukaSLY = dimension * 0.2;
+                const porukaSLW = 626/1000 * dimension * 0.65;
+                const porukaSLH = 417/1000 * dimension * 0.65;
+
+                ctx.drawImage(porukaSL, porukaSLX - porukaSLW/2 * 1.4, porukaSLY - porukaSLH/2 * 1.4, porukaSLW * 1.4, porukaSLH * 1.4); 
+                pisi(porukaSLX - dimension/20, dimension/14, dimension/10, dimension/30, 0.025 * dimension, izrekeNiz.length + '/30');
+
+                const dodajPX = window.innerWidth/2;
+                const dodajPY = dimension * 0.32;
+                const dodajPW = 2.4 * dimension * 0.1;
+                const dodajPH = dimension * 0.1;
+                
+                if(dodajPpressed){
+                    ctx.drawImage(dodajP, dodajPX - dodajPW/2 * 0.9, dodajPY - dodajPH/2 * 0.9, dodajPW * 0.9, dodajPH * 0.9);
+                }else{
+                    ctx.drawImage(dodajP, dodajPX - dodajPW/2, dodajPY - dodajPH/2, dodajPW, dodajPH);
+                }
+                                
+                textarea.style.width = porukaSLW +'px';
+                textarea.style.height = porukaSLH * 0.7 +'px';
+                textarea.style.left = porukaSLX - porukaSLW/2 +'px';
+                textarea.style.top = porukaSLY - porukaSLH/2 * 0.7 +'px';
+                //textarea.style.fontSize = dimension/30 +'px';
+
+
+                izrekePonudjene.forEach((element, index) => {
+                    
+                    //izrekePonudjene[index].w = 0.3 * dimension;
+                    //izrekePonudjene[index].h = 0.3 * dimension;
+                    //if(element.mesto == 1){
+                    //    izrekePonudjene[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.3;
+                    //}else if(element.mesto == 2){
+                    //    izrekePonudjene[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.7;
+                    //}
+
+                    if(window.innerWidth >= window.innerHeight/1.3){
+                        if(izrekePonudjene[izrekePonudjene.length - 1].yy < 0.6){
+                            izrekePonudjene[0].yy = izrekePonudjene[0].yy + 0.4;
+                        }
+                        if(izrekePonudjene[0].yy > 0.6){
+                            izrekePonudjene[0].yy = 0.6;
+                        }
+
+                        if(index % 2 === 0){
+                            mesto = 1;
+                            izrekePonudjene[index].yy = index * 0.2 + izrekePonudjene[0].yy;
+                        }else{
+                            mesto = 2;
+                            izrekePonudjene[index].yy = index * 0.2 - 0.2 + izrekePonudjene[0].yy;;
+                        }
+
+                        if(element.mesto == 1){
+                            izrekePonudjene[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.3;
+                        }else if(element.mesto == 2){
+                            izrekePonudjene[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.7;
+                        }
+
+                        izrekePonudjene[index].w = 0.3 * dimension;
+                        izrekePonudjene[index].h = 0.3 * dimension;
+
+                        if(isNaN(izrekePonudjene[0].yy)){ izrekePonudjene[0].yy = 0.6; }
+                        izrekePonudjene[index].y = element.yy * dimension;
+                    }else{
+                        if(izrekePonudjene[izrekePonudjene.length - 1].yy < 0.6){
+                            izrekePonudjene[0].yy = izrekePonudjene[0].yy + 0.4;
+                        }
+                        if(izrekePonudjene[0].yy > 0.6){
+                            izrekePonudjene[0].yy = 0.6;
+                        }
+                        izrekePonudjene[index].yy = index * 0.6 + izrekePonudjene[0].yy;
+                        izrekePonudjene[index].x = window.innerWidth/2;
+
+                        izrekePonudjene[index].w = 0.5 * dimension;
+                        izrekePonudjene[index].h = 0.5 * dimension;
+
+                        if(isNaN(izrekePonudjene[0].yy)){ izrekePonudjene[0].yy = 0.6; }
+                        izrekePonudjene[index].y = (element.yy + 0.2) * dimension;
+                    }
+
+
+                    if(poklon.za == 'otac' || poklon.za == 'drug' || poklon.za == 'brat'){
+                        izrekePonudjene[index].boja1 = plavi;
+                        izrekePonudjene[index].boja2 = zuti;
+                        izrekePonudjene[index].boja = plavi;
+                    }else if(poklon.za == 'drugarica' || poklon.za == 'sestra'){
+                        izrekePonudjene[index].boja1 = roze;
+                        izrekePonudjene[index].boja2 = zuti;
+                        izrekePonudjene[index].boja = roze;
+                    }else if(poklon.za == 'majka'){
+                        izrekePonudjene[index].boja1 = roze;
+                        izrekePonudjene[index].boja2 = bez;
+                        izrekePonudjene[index].boja = roze;
+                    }else if(poklon.za == 'partner'){
+                        izrekePonudjene[index].boja1 = crveni;
+                        izrekePonudjene[index].boja2 = bez;
+                        izrekePonudjene[index].boja = crveni;
+                    }
+
+                    if(window.innerWidth >= window.innerHeight/1.3){
+                        if(index != 1 && index != 0){
+                            const bojaStara = izrekePonudjene[index - 2].boja;
+                            const bojaNova = izrekePonudjene[index].boja;
+                            if(bojaStara == element.boja && element.boja == element.boja1){
+                                izrekePonudjene[index].boja = element.boja2;
+                            }else if(bojaStara == element.boja && element.boja == element.boja2){
+                                izrekePonudjene[index].boja = element.boja1;
+                            }
+                        }else if(index == 0){
+                            izrekePonudjene[index].boja = element.boja2;
+                        }else if(index == 0){
+                            izrekePonudjene[index].boja = element.boja1;
+                        }
+                    }else{
+                        if(index % 2 === 0){
+                            izrekePonudjene[index].boja = element.boja2;
+                        }else{
+                            izrekePonudjene[index].boja = element.boja1;
+                        }
+                    }
+                    
+                    
+                    if(element.y-element.h < window.innerHeight && element.y > 0){
+                        let deli;
+                        if(element.mess.length <= 50){ deli = 0.45; }
+                        else if(element.mess.length <= 100){ deli = 0.5; }
+                        else if(element.mess.length <= 150){ deli = 0.6; }
+                        else if(element.mess.length <= 200){ deli = 0.7; }
+                        else if(element.mess.length <= 250){ deli = 0.8; }
+
+                        ctx.save();
+                        ctx.rect(window.innerWidth/2 - dimension/2, dimension/2.8, 
+                        dimension, window.innerHeight * 0.53 + window.innerHeight/2.8 - dimension/2.8); 
+                        ctx.clip();
+                        ctx.drawImage(element.boja, element.x - element.w/2 * 1.5, element.y - element.h/2 * 1.4, element.w * 1.5, element.h * 1.4);
+                        pisi(element.x - element.w/2, element.y - element.h/2, element.w, element.h, 
+                        0.025 * element.w*2/deli, element.mess);
+                        if(element.checked){
+                            ctx.drawImage(stiklic, element.x - element.w/2 * 0.15, element.y - element.h/1.9, element.w * 0.18, element.h * 0.18);
+                            //ctx.filter = 'blur(6px)';
+                        }
+                        ctx.restore();
+                    }
+                
+                });
+
+                dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                dalje.Y = window.innerHeight * 0.93;
+                dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                dalje.W = dimension * 0.24;
+                dalje.H = dimension * 0.087;
+
+                if(dalje.pressed){
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+                
+                if(dalje.npressed){
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+        
+            }else if(page == 5 && poklon.tip == 'kutija'){
+                const kf1 = window.innerHeight/dimension * 100;
+                const x = window.innerWidth/2;
+                const y = window.innerHeight/2;
+                const w = dimension/1.25 + kf1;
+                const h = dimension/1.25 + kf1;
+                ctx.drawImage(srce2, x - w/2, y - h/2, w, h);
+                
+                dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                dalje.Y = window.innerHeight * 0.93;
+                dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                dalje.W = dimension * 0.24;
+                dalje.H = dimension * 0.087;
+
+                if(dalje.pressed){
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+                
+                if(dalje.npressed){
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+            }else if(page == 6 && poklon.tip == 'kutija'){
+
+                const porukaSLX = window.innerWidth/2;
+                const porukaSLY = dimension * 0.2;
+                const porukaSLW = 626/1000 * dimension * 0.65;
+                const porukaSLH = 417/1000 * dimension * 0.65;
+
+                ctx.drawImage(porukaSL, porukaSLX - porukaSLW/2 * 1.4, porukaSLY - porukaSLH/2 * 1.4, porukaSLW * 1.4, porukaSLH * 1.4); 
+                pisi(porukaSLX - dimension/20, dimension/14, dimension/10, dimension/30, 0.025 * dimension, pitanjaNiz.length + '/30');
+
+                const dodajPX = window.innerWidth/2;
+                const dodajPY = dimension * 0.32;
+                const dodajPW = 2.4 * dimension * 0.1;
+                const dodajPH = dimension * 0.1;
+                
+                if(dodajPpressed){
+                    ctx.drawImage(dodajP, dodajPX - dodajPW/2 * 0.9, dodajPY - dodajPH/2 * 0.9, dodajPW * 0.9, dodajPH * 0.9);
+                }else{
+                    ctx.drawImage(dodajP, dodajPX - dodajPW/2, dodajPY - dodajPH/2, dodajPW, dodajPH);
+                }
+
+                textarea.style.width = porukaSLW +'px';
+                textarea.style.height = porukaSLH * 0.7 +'px';
+                textarea.style.left = porukaSLX - porukaSLW/2 +'px';
+                textarea.style.top = porukaSLY - porukaSLH/2 * 0.7 +'px';
+                //textarea.style.fontSize = dimension/30 +'px';
+
+                pitanjaPonudjena.forEach((element, index) => {
+                    //pitanjaPonudjena[index].w = 0.3 * dimension;
+                    //pitanjaPonudjena[index].h = 0.3 * dimension;
+                    //if(element.mesto == 1){
+                    //    pitanjaPonudjena[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.3;
+                    //}else if(element.mesto == 2){
+                    //    pitanjaPonudjena[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.7;
+                    //}
+                    //pitanjaPonudjena[index].y = element.yy * dimension;
+
+                    if(window.innerWidth >= window.innerHeight/1.3){
+                        if(pitanjaPonudjena[pitanjaPonudjena.length - 1].yy < 0.6){
+                            pitanjaPonudjena[0].yy = pitanjaPonudjena[0].yy + 0.4;
+                        }
+                        if(pitanjaPonudjena[0].yy > 0.6){
+                            pitanjaPonudjena[0].yy = 0.6;
+                        }
+
+                        if(index % 2 === 0){
+                            mesto = 1;
+                            pitanjaPonudjena[index].yy = index * 0.2 + pitanjaPonudjena[0].yy;
+                        }else{
+                            mesto = 2;
+                            pitanjaPonudjena[index].yy = index * 0.2 - 0.2 + pitanjaPonudjena[0].yy;;
+                        }
+
+                        if(element.mesto == 1){
+                            pitanjaPonudjena[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.3;
+                        }else if(element.mesto == 2){
+                            pitanjaPonudjena[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.7;
+                        }
+
+                        pitanjaPonudjena[index].w = 0.3 * dimension;
+                        pitanjaPonudjena[index].h = 0.3 * dimension;
+
+                        if(isNaN(pitanjaPonudjena[0].yy)){ pitanjaPonudjena[0].yy = 0.6; }
+                        pitanjaPonudjena[index].y = element.yy * dimension;
+                    }else{
+                        if(pitanjaPonudjena[pitanjaPonudjena.length - 1].yy < 0.6){
+                            pitanjaPonudjena[0].yy = pitanjaPonudjena[0].yy + 0.4;
+                        }
+                        if(pitanjaPonudjena[0].yy > 0.6){
+                            pitanjaPonudjena[0].yy = 0.6;
+                        }
+                        pitanjaPonudjena[index].yy = index * 0.6 + pitanjaPonudjena[0].yy;
+                        pitanjaPonudjena[index].x = window.innerWidth/2;
+
+                        pitanjaPonudjena[index].w = 0.5 * dimension;
+                        pitanjaPonudjena[index].h = 0.5 * dimension;
+
+                        if(isNaN(pitanjaPonudjena[0].yy)){ pitanjaPonudjena[0].yy = 0.6; }
+                        pitanjaPonudjena[index].y = (element.yy + 0.2) * dimension;
+                    }
+
+
+                    if(poklon.za == 'otac' || poklon.za == 'drug' || poklon.za == 'brat'){
+                        pitanjaPonudjena[index].boja1 = plavi;
+                        pitanjaPonudjena[index].boja2 = zuti;
+                        pitanjaPonudjena[index].boja = plavi;
+                    }else if(poklon.za == 'drugarica' || poklon.za == 'sestra'){
+                        pitanjaPonudjena[index].boja1 = roze;
+                        pitanjaPonudjena[index].boja2 = zuti;
+                        pitanjaPonudjena[index].boja = roze;
+                    }else if(poklon.za == 'majka'){
+                        pitanjaPonudjena[index].boja1 = roze;
+                        pitanjaPonudjena[index].boja2 = bez;
+                        pitanjaPonudjena[index].boja = roze;
+                    }else if(poklon.za == 'partner'){
+                        pitanjaPonudjena[index].boja1 = crveni;
+                        pitanjaPonudjena[index].boja2 = bez;
+                        pitanjaPonudjena[index].boja = crveni;
+                    }
+
+                    if(window.innerWidth >= window.innerHeight/1.3){
+                        if(index != 1 && index != 0){
+                            const bojaStara = pitanjaPonudjena[index - 2].boja;
+                            const bojaNova = pitanjaPonudjena[index].boja;
+                            if(bojaStara == element.boja && element.boja == element.boja1){
+                                pitanjaPonudjena[index].boja = element.boja2;
+                            }else if(bojaStara == element.boja && element.boja == element.boja2){
+                                pitanjaPonudjena[index].boja = element.boja1;
+                            }
+                        }else if(index == 0){
+                            pitanjaPonudjena[index].boja = element.boja2;
+                        }else if(index == 0){
+                            pitanjaPonudjena[index].boja = element.boja1;
+                        }
+                    }else{
+                        if(index % 2 === 0){
+                            pitanjaPonudjena[index].boja = element.boja2;
+                        }else{
+                            pitanjaPonudjena[index].boja = element.boja1;
+                        }
+                    }
+
+                    if(element.y-element.h < window.innerHeight && element.y > 0){
+                        let deli;
+                        if(element.mess.length <= 50){ deli = 0.45; }
+                        else if(element.mess.length <= 100){ deli = 0.5; }
+                        else if(element.mess.length <= 150){ deli = 0.6; }
+                        else if(element.mess.length <= 200){ deli = 0.7; }
+                        else if(element.mess.length <= 250){ deli = 0.8; }
+
+                        ctx.save();
+                        ctx.rect(window.innerWidth/2 - dimension/2, dimension/2.8, 
+                        dimension, window.innerHeight * 0.53 + window.innerHeight/2.8 - dimension/2.8); 
+                        ctx.clip();
+                        ctx.drawImage(element.boja, element.x - element.w/2 * 1.5, element.y - element.h/2 * 1.4, element.w * 1.5, element.h * 1.4);
+                        pisi(element.x - element.w/2, element.y - element.h/2, element.w, element.h, 
+                        0.025 * element.w*2/deli, element.mess);
+                        if(element.checked){
+                            ctx.drawImage(stiklic, element.x - element.w/2 * 0.15, element.y - element.h/1.9, element.w * 0.18, element.h * 0.18);
+                            //ctx.filter = 'blur(6px)';
+                        }
+                        ctx.restore();
+                    }
+                });
+
+                dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                dalje.Y = window.innerHeight * 0.93;
+                dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                dalje.W = dimension * 0.24;
+                dalje.H = dimension * 0.087;
+
+                if(dalje.pressed){
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+                
+                if(dalje.npressed){
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                }else{
+                    ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                }
+
+                }else if(page == 7 && poklon.tip == 'kutija'){
+                    const kf1 = window.innerHeight/dimension * 100;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.25 + kf1;
+                    const h = dimension/1.25 + kf1;
+                    ctx.drawImage(srce3, x - w/2, y - h/2, w, h);
+
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+
+                }else if(page == 8 && poklon.tip == 'kutija'){
+                    const kf1 = window.innerHeight/dimension;
+
+                    fileInputL.style.display = 'block';
+                    fileInputL.style.padding = dimension * kf1/200 + 'px';
+                    fileInputL.style.width = dimension/5 * kf1 +'px';
+                    fileInputL.style.fontSize = dimension * kf1/50 + 'px';
+                    fileInputL.style.left = window.innerWidth/2 - dimension/5 * kf1/2 + 'px';
+                    fileInputL.style.top = dimension * kf1 * 0.78 + 'px';
+
+                    textInput.style.display = 'block';
+                    textInput.style.padding = dimension * kf1/200 + 'px';
+                    textInput.style.width = dimension/4 * kf1 +'px';
+                    textInput.style.fontSize = dimension * kf1/50 + 'px';
+                    textInput.style.left = window.innerWidth/2 - dimension/4 * kf1/2 + 'px';
+                    textInput.style.top = dimension * kf1 * 0.92 + 'px';
+
+                    hlink.style.display = 'block';
+                    hlink.style.padding = dimension * kf1/200 + 'px';
+                    hlink.style.width = dimension/3 * kf1 +'px';
+                    hlink.style.fontSize = dimension * kf1/50 + 'px';
+                    hlink.style.left = window.innerWidth/2 - dimension/3 * kf1/2 + 'px';
+                    hlink.style.top = dimension * kf1 * 0.83 + 'px';
+
+                    if(slika.naturalWidth > slika.naturalHeight){
+                        slikaW = dimension/2.5/1.9 * kf1;
+                        slikaH = slika.naturalHeight/slika.naturalWidth * dimension/2.5/1.9 * kf1;
+                    }else{
+                        slikaH = dimension/2.5/1.9 * kf1;
+                        slikaW = slika.naturalWidth/slika.naturalHeight * dimension/2.5/1.9 * kf1;
+                    }
+    
+                    
+                    const ramW = dimension * 624/863 * kf1;
+                    const ramH = dimension * kf1;
+                    ctx.drawImage(ramZaSliku, window.innerWidth/2 - ramW/2/1.9, dimension/4.2 * kf1, ramW/1.9, ramH/1.9);
+                    ctx.drawImage(zaFotografije, window.innerWidth/2 - (1621/1175 * dimension/3 * kf1)/2, dimension * -0.03 * kf1, 
+                    1621/1175 * dimension/3 * kf1, 1080/1175 * dimension/3 * kf1);
+                    ctx.fillStyle = '#0F0';
+                    //ctx.fillRect(window.innerWidth/2 - ramW/2/2, dimension/5.1 * kf1 + ramH/1.7, ramW/2, dimension/8 * kf1);
+                    ctx.fillStyle = '#000';
+                    //pisi(window.innerWidth/2 - ramW/2/1.8, dimension/6 * kf1 + ramH/1.7, ramW/1.8, dimension/8 * kf1, 0.024 * dimension * kf1, 
+                    //"Napiši tajnu poruku ili unesi link pesme sa YouTube-a.");
+                    ctx.drawImage(slika, window.innerWidth/2 - slikaW/2, dimension/2.3 * kf1 - slikaH/2, slikaW, slikaH);
+                    ctx.fillStyle = '#000';
+
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 9 && poklon.tip == 'kutija'){
+                    const kf1 = window.innerHeight/dimension * 70;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.25 + kf1;
+                    const h = dimension/1.25 + kf1;
+                    ctx.drawImage(kutijaU4, x - w/2, y - h/2, w, h);
+
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 10 && poklon.tip == 'kutija'){
+                    //ctx.drawImage(bez, window.innerWidth/2 - dimension/2.5, dimension/2 - dimension/2.5, dimension/1.25, dimension/1.25);
+                    //formContainer.style.fontSize = dimension * 0.018 +'px';
+                    //formContainer.style.width = dimension * 0.3 +'px';
+                    //formContainer.style.top = dimension * 0.28 +'px';
+                    //formContainer.style.left = window.innerWidth/2 - dimension * 0.15 +'px';
+                    const kf1 = window.innerHeight/dimension * 70;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.25 + kf1;
+                    const h = dimension/1.25 + kf1;
+                    ctx.drawImage(bez, x - w/2, y - h/2, w, h);
+
+                    formContainer.style.fontSize = (dimension + kf1) * 0.015 +'px';
+                    formContainer.style.width = w/2 + 'px';
+                    formContainer.style.top = y - formContainer.offsetHeight/2+'px';
+                    formContainer.style.left = x - w/4+'px';
+
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(poruciSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(poruciSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 11 && poklon.tip == 'kutija'){
+                    const kf1 = window.innerHeight/dimension * 70;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.25 + kf1;
+                    const h = dimension/1.25 + kf1;
+                    ctx.drawImage(zStranaK, x - w/2, y - h/2, w, h);
+                    //ctx.drawImage(zStranaK, window.innerWidth/2 - dimension/2, dimension/2 - dimension/2, dimension, dimension);
+                }else if(page == 2 && poklon.tip == 'boca'){
+
+                    boce.forEach((element, index) => {
+                        if(index != 0){
+                            boce[index].yy = boce[index-1].yy + 0.3;
+                        }
+                        boce[index].x = window.innerWidth/2;
+                        boce[index].y = element.yy * dimension;
+                        boce[index].w = element.ww * dimension/2;
+                        boce[index].h = element.hh * dimension/2;
+                    });
+
+                    if(p1pressed){
+                        ctx.drawImage(stariPapir, boce[0].x - boce[0].w/2 * 0.9, boce[0].y - boce[0].h/2 * 0.9, boce[0].w * 0.9, boce[0].h * 0.9);
+                        pisi(boce[0].x - boce[0].w/2 * 0.9, boce[0].y - boce[0].h/2 * 0.9, boce[0].w * 0.9, boce[0].h * 0.9, 0.05 * dimension * 0.9, 'Za partnera');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[0].x - boce[0].w/2, boce[0].y - boce[0].h/2, boce[0].w, boce[0].h);
+                        pisi(boce[0].x - boce[0].w/2, boce[0].y - boce[0].h/2, boce[0].w, boce[0].h, 0.05 * dimension, 'Za partnera');
+                    }
+                    if(p2pressed){
+                        ctx.drawImage(stariPapir, boce[1].x - boce[1].w/2 * 0.9, boce[1].y - boce[1].h/2 * 0.9, boce[1].w * 0.9, boce[1].h * 0.9);
+                        pisi(boce[1].x - boce[1].w/2 * 0.9, boce[1].y - boce[1].h/2 * 0.9, boce[1].w * 0.9, boce[1].h * 0.9, 0.05 * dimension * 0.9, 'Za majku');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[1].x - boce[1].w/2, boce[1].y - boce[1].h/2, boce[1].w, boce[1].h);
+                        pisi(boce[1].x - boce[1].w/2, boce[1].y - boce[1].h/2, boce[1].w, boce[1].h, 0.05 * dimension, 'Za majku');
+                    }
+                    if(p3pressed){
+                        ctx.drawImage(stariPapir, boce[2].x - boce[2].w/2 * 0.9, boce[2].y - boce[2].h/2 * 0.9, boce[2].w * 0.9, boce[2].h * 0.9);
+                        pisi(boce[2].x - boce[2].w/2 * 0.9, boce[2].y - boce[2].h/2 * 0.9, boce[2].w * 0.9, boce[2].h * 0.9, 0.05 * dimension * 0.9, 'Za oca');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[2].x - boce[2].w/2, boce[2].y - boce[2].h/2, boce[2].w, boce[2].h);
+                        pisi(boce[2].x - boce[2].w/2, boce[2].y - boce[2].h/2, boce[2].w, boce[2].h, 0.05 * dimension, 'Za oca');
+                    }
+                    if(p4pressed){
+                        ctx.drawImage(stariPapir, boce[3].x - boce[3].w/2 * 0.9, boce[3].y - boce[3].h/2 * 0.9, boce[3].w * 0.9, boce[3].h * 0.9);
+                        pisi(boce[3].x - boce[3].w/2 * 0.9, boce[3].y - boce[3].h/2 * 0.9, boce[3].w * 0.9, boce[3].h * 0.9, 0.05 * dimension * 0.9, 'Za sestru');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[3].x - boce[3].w/2, boce[3].y - boce[3].h/2, boce[3].w, boce[3].h);
+                        pisi(boce[3].x - boce[3].w/2, boce[3].y - boce[3].h/2, boce[3].w, boce[3].h, 0.05 * dimension, 'Za sestru');
+                    }
+                    if(p5pressed){
+                        ctx.drawImage(stariPapir, boce[4].x - boce[4].w/2 * 0.9, boce[4].y - boce[4].h/2 * 0.9, boce[4].w * 0.9, boce[4].h * 0.9);
+                        pisi(boce[4].x - boce[4].w/2 * 0.9, boce[4].y - boce[4].h/2 * 0.9, boce[4].w * 0.9, boce[4].h * 0.9, 0.05 * dimension * 0.9, 'Za brata');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[4].x - boce[4].w/2, boce[4].y - boce[4].h/2, boce[4].w, boce[4].h);
+                        pisi(boce[4].x - boce[4].w/2, boce[4].y - boce[4].h/2, boce[4].w, boce[4].h, 0.05 * dimension, 'Za brata');
+                    }
+                    if(p6pressed){
+                        ctx.drawImage(stariPapir, boce[5].x - boce[5].w/2 * 0.9, boce[5].y - boce[5].h/2 * 0.9, boce[5].w * 0.9, boce[5].h * 0.9);
+                        pisi(boce[5].x - boce[5].w/2 * 0.9, boce[5].y - boce[5].h/2 * 0.9, boce[5].w * 0.9, boce[5].h * 0.9, 0.05 * dimension * 0.9, 'Za drugaricu');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[5].x - boce[5].w/2, boce[5].y - boce[5].h/2, boce[5].w, boce[5].h);
+                        pisi(boce[5].x - boce[5].w/2, boce[5].y - boce[5].h/2, boce[5].w, boce[5].h, 0.05 * dimension, 'Za drugaricu');
+                    }
+                    if(p7pressed){
+                        ctx.drawImage(stariPapir, boce[6].x - boce[6].w/2 * 0.9, boce[6].y - boce[6].h/2 * 0.9, boce[6].w * 0.9, boce[6].h * 0.9);
+                        pisi(boce[6].x - boce[6].w/2 * 0.9, boce[6].y - boce[6].h/2 * 0.9, boce[6].w * 0.9, boce[6].h * 0.9, 0.05 * dimension * 0.9, 'Za druga');
+                    }else{
+                        ctx.drawImage(stariPapir, boce[6].x - boce[6].w/2, boce[6].y - boce[6].h/2, boce[6].w, boce[6].h);
+                        pisi(boce[6].x - boce[6].w/2, boce[6].y - boce[6].h/2, boce[6].w, boce[6].h, 0.05 * dimension, 'Za druga');
+                    }
+
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+                    
+                    if(poklon.za){
+                        if(dalje.pressed){
+                            ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                        }else{
+                            ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                        }
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+
+                }else if(page == 3 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 90;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.5 + kf1;
+                    const h = dimension/1.5 + kf1;
+                    ctx.drawImage(bocaU1, x-w/2, y-h/2, w, h);
+                    
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 4 && poklon.tip == 'boca'){
+                    ctx.drawImage(stariPapir, window.innerWidth/2 - 106/100 * dimension/6, dimension/8 - 573/1000 * dimension/6, 
+                    106/100 * dimension/3, 573/1000 * dimension/3);
+                    pisi(window.innerWidth/2 - 106/100 * dimension/8, dimension/8 - 573/1000 * dimension/6, 
+                    106/100 * dimension/4, 573/1000 * dimension/3, 0.04 * dimension, 'Izaberi dezen papira');
+
+                    if(loadedPodaci){
+                        
+                        dezeniPonudjeni.forEach((element, index) => {
+                          
+                            dezeniPonudjeni[index].w = element.slika.naturalWidth/element.slika.naturalHeight * 0.4 * dimension;
+                            dezeniPonudjeni[index].h = 0.4 * dimension;
+                            if(element.mesto == 1){
+                                dezeniPonudjeni[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.3;
+                            }else if(element.mesto == 2){
+                                dezeniPonudjeni[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.7;
+                            }
+                            dezeniPonudjeni[index].y = element.yy * dimension;
+
+                            if(element.y-element.h < window.innerHeight && element.y > -dimension){
+                                ctx.save();
+                                ctx.rect(window.innerWidth/2 - dimension/2, dimension/3.9, 
+                                dimension, window.innerHeight * 0.53 + window.innerHeight/2.8 - dimension/3.9); 
+                                ctx.clip();
+                                if(element.checked && userID == 'Andreja'){
+                                    ctx.filter = 'blur(6px)';
+                                    ctx.drawImage(element.slika, element.x - element.w/2, element.y - element.h/2, element.w, element.h);
+                                }else if(element.checked){
+                                    ctx.drawImage(element.slika, element.x - element.w*0.55, element.y - element.h*0.55, element.w*1.1, element.h*1.1);
+                                }else{
+                                    ctx.drawImage(element.slika, element.x - element.w/2, element.y - element.h/2, element.w, element.h);
+                                }
+                                ctx.restore();
+                            }
+                        });                        
+                    }
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 5 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 90;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.5 + kf1;
+                    const h = dimension/1.5 + kf1;
+                    ctx.drawImage(bocaU2, x-w/2, y-h/2, w, h);
+                    
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 6 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 0.9;
+                    if(idDezena){
+                        let x = window.innerWidth/2;
+                        let y = dimension/1.5 * kf1 * 1.1;
+                        let w = dimension * 0.4 * kf1;
+                        let h = slikaDezena.naturalHeight / slikaDezena.naturalWidth * dimension * 0.4 * kf1;
+                        ctx.drawImage(slikaDezena, x - w/2, y - h/2, w, h);                    
+
+                        textarea.style.width = w * 0.8 +'px';
+                        textarea.style.height = h * 0.8 +'px';
+                        textarea.style.left = x - w * 0.4 +'px';
+                        textarea.style.top = y - h * 0.4 +'px';
+                        //textarea.style.fontSize = dimension/50 * kf1 +'px';
+                    }
+
+                    porukePonudjene.forEach((element, index) => {
+                        //porukePonudjene[index].w = 0.35 * dimension;
+                        porukePonudjene[index].w = 0.45 * dimension * kf1;
+                        //porukePonudjene[index].h = 0.35 * dimension;
+                        porukePonudjene[index].h = 0.45 * dimension * kf1;
+                        if(element.mesto == 1){
+                            //porukePonudjene[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.3;
+                            porukePonudjene[index].x = window.innerWidth/2;
+                        }else if(element.mesto == 2){
+                            //porukePonudjene[index].x = (window.innerWidth/2 - dimension/2) + dimension * 0.7;
+                            porukePonudjene[index].x = window.innerWidth/2;
+                        }
+                        if(index != 0){
+                            porukePonudjene[index].yy = -index * 0.35 + porukePonudjene[0].yy;
+                        }
+                        porukePonudjene[index].y = element.yy * dimension * kf1;
+
+                        if(element.y < window.innerHeight && element.y > -dimension){
+                            let deli;
+                            if(element.mess.length <= 50){ deli = 0.9; }
+                            else if(element.mess.length <= 100){ deli = 1; }
+                            else if(element.mess.length <= 150){ deli = 1.4; }
+                            else if(element.mess.length <= 200){ deli = 1.7; }
+                            else if(element.mess.length <= 250){ deli = 1.8; }
+                            else if(element.mess.length <= 500){ deli = 2.3; }
+                            else if(element.mess.length <= 1000){ deli = 3.2; }
+                            ctx.save();
+                            ctx.rect(window.innerWidth/2 - dimension/2, 0, 
+                            dimension, dimension * kf1 * 0.417); 
+                            ctx.clip();
+                            if(element.checked){
+                                ctx.filter = 'blur(6px)';
+                            }
+                            ctx.drawImage(papir, element.x - element.w/2, element.y - element.h/2, element.w, element.h);
+                            pisi2(element.x - element.w/2 * 0.8, element.y - element.h/2, element.w * 0.8, element.h, 
+                            dimension/30 * kf1/deli, element.mess);
+                            ctx.restore();
+                        }
+                    });
+                    
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.96;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 7 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 90;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.5 + kf1;
+                    const h = dimension/1.5 + kf1;
+                    ctx.drawImage(bocaU3, x-w/2, y-h/2, w, h);
+                    
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 8 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 90;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.5 + kf1;
+                    const h = dimension/1.5 + kf1;
+                    ctx.drawImage(bocaU4, x-w/2, y-h/2, w, h);
+                    
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(daljeSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 9 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 70;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.25 + kf1;
+                    const h = dimension/1.25 + kf1;
+                    ctx.drawImage(formaB, x - w/2, y - h/2, w, h);
+                    
+                    formContainer.style.fontSize = (dimension + kf1) * 0.015 +'px';
+                    formContainer.style.width = w/2 + 'px';
+                    formContainer.style.top = y - formContainer.offsetHeight/2+'px';
+                    formContainer.style.left = x - w/4+'px';
+                    
+                    dalje.X = window.innerWidth/2 - dimension/2 + dimension * 0.9;
+                    dalje.Y = window.innerHeight * 0.93;
+                    dalje.XX = window.innerWidth/2 - dimension/2 + dimension * 0.1;
+                    dalje.W = dimension * 0.24;
+                    dalje.H = dimension * 0.087;
+
+                    if(dalje.pressed){
+                        ctx.drawImage(poruciSL, dalje.X - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(poruciSL, dalje.X - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                    
+                    if(dalje.npressed){
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2 * 0.95 , dalje.Y - dalje.H/2 * 0.95, dalje.W * 0.95, dalje.H * 0.95);
+                    }else{
+                        ctx.drawImage(nazadSL, dalje.XX - dalje.W/2, dalje.Y - dalje.H/2, dalje.W, dalje.H);
+                    }
+                }else if(page == 10 && poklon.tip == 'boca'){
+                    const kf1 = window.innerHeight/dimension * 70;
+                    const x = window.innerWidth/2;
+                    const y = window.innerHeight/2;
+                    const w = dimension/1.25 + kf1;
+                    const h = dimension/1.25 + kf1;
+                    ctx.drawImage(zStranaB, x - w/2, y - h/2, w, h);
+                } 
+                
+                
+                if(page == 4 && poklon.tip == 'kutija' || page == 6 && poklon.tip == 'kutija'){
+                    textarea.style.fontSize = dimension/30 +'px';
+                    textarea.setAttribute('maxlength', '250');
+                }else if(page == 6 && poklon.tip == 'boca'){
+                    textarea.setAttribute('maxlength', '1000');
+                    const kf1 = window.innerHeight/dimension * 0.9;
+                    //slovoDF();  
+                    textarea.style.fontSize = dimension/30 * kf1/slovoD +'px';
+                }
+                
+        }
+
+
+    
+
+        textarea.addEventListener('input', function() {
+            slovoDF();  
+            if (textarea.value.length >= textarea.maxLength) {
+                textarea.value = textarea.value.substring(0, textarea.maxLength); 
+            }           
+        });
+
+        function slovoDF(){
+            const kf1 = window.innerHeight/dimension * 0.9;
+            slovoD = 1;
+            const textareaHeight = parseInt(window.getComputedStyle(textarea).height, 10);
+            textarea1.value = textarea.value;
+            textarea1.style.fontSize = dimension/30 * kf1/slovoD +'px';
+            textarea1.style.width = textarea.style.width;
+            textarea1.style.height = textareaHeight * 0.7 +'px';
+            
+            while(textarea1.scrollHeight > textareaHeight * 0.8){ 
+                slovoD += 0.01; 
+                textarea1.style.fontSize = dimension/30 * kf1/slovoD +'px';
+            }
+            //textarea1.style.left = '0px';  
+            //textarea1.style.top = '0px';
+            //textarea1.style.zIndex = '100';
+            //textarea1.style.border = '1px solid black';
+        }
+
+
+        
+        
+        
+
+
+
+
+
+
+        
+        
+
+        //ANIMACIJE
+        /*
+        let actionX = 0;
+        let actionY = 0;
+        let actionRowX = 0;
+        let actionRowY = 0;
+        let actionStage = 0;
+
+        function confettiF(element, index){
+
+            ctx.drawImage( element.boja, element.x - element.w/2, element.y - element.h/2, element.w, element.h );
+            pisi(element.x - element.w/2 + element.w * 1/6, element.y - element.h/2 + element.h * 1/6,
+            element.w * 2/3, element.h * 2/3, 0.07 * element.w * 2/3, element.mess);
+
+            ctx1.drawImage( confetti, actionRowX * 512, actionRowY * 512, 512, 512,
+            actionX - dimension/2, actionY - dimension/1.7, dimension, dimension );
+
+            if(actionRowX < 7){ 
+                actionRowX++; 
+            }else if(actionRowX == 7){ 
+                actionRowX = 0;
+                actionRowY++;
+            }
+            if(actionRowX == 6 && actionRowY == 7){
+                action = 'confetti1';
+                actionRowX = 0;
+                actionRowY = 0;
+            }
+        }
+
+        function confetti1F(element, index){
+            if(poklon.za == 'otac' && boja == plavi || poklon.za == 'drug' && boja == plavi || poklon.za == 'brat' && boja == plavi){
+                boja1 = zuti;
+            }else if(poklon.za == 'otac' || poklon.za == 'drug' || poklon.za == 'brat'){
+                boja1 = plavi;
+            }else if(poklon.za == 'partner' && boja == crveni){
+                boja1 = bez;
+            }else if(poklon.za == 'partner'){
+                boja1 = crveni;
+            }else if(poklon.za == 'drugarica' && boja == roze || poklon.za == 'sestra' && boja == roze){
+                boja1 = zuti;
+            }else if(poklon.za == 'drugarica' || poklon.za == 'sestra'){
+                boja1 = roze;
+            }else if(poklon.za == 'majka' && boja == roze){
+                boja1 = bez;
+            }else if(poklon.za == 'majka'){
+                boja1 = roze;
+            }
+            ctx.drawImage(boja1, slx - element.w/2 * 3/2, sly - element.h/2 * 3/2, element.w * 3/2, element.h * 3/2);
+            pisi(slx - element.w/2, sly - element.h/2,
+            element.w, element.h, 0.045 * dimension * element.w/slw, element.mess);
+            if(arc >= 1 && arc <= 4){
+                ctx.drawImage( arc1, slx - slw/2, sly - slh/2 , slw, slh );
+            }else if(arc >= 5 && arc <= 8){
+                ctx.drawImage( arc2, slx - slw/2, sly - slh/2 , slw, slh );
+            }else if(arc >= 9 && arc <= 12){
+                ctx.drawImage( arc3, slx - slw/2, sly - slh/2 , slw, slh );
+            }else if(arc >= 13 && arc <= 16){
+                ctx.drawImage( arc4, slx - slw/2, sly - slh/2 , slw, slh );
+            }else if(arc >= 17 && arc <= 20){
+                ctx.drawImage( arc5, slx - slw/2, sly - slh/2 , slw, slh );
+            }else if(arc >= 21 && arc <= 24){
+                ctx.drawImage( arc6, slx - slw/2, sly - slh/2 , slw, slh );
+            }else if(arc >= 25 && arc <= 28){
+                ctx.drawImage( arc7, slx - slw/2, sly - slh/2 , slw, slh );
+            }
+        }*/
+
+        //EVENTS
+
+        let userX;
+        let userY;
+        let userYY;
+
+        window.addEventListener('pointerup', (e) => {
+            pressed = false;
+
+            const daljeXmanje = dalje.X - dalje.W/2.5;
+            const daljeXvece = dalje.X + dalje.W/2.5;
+            const daljeYmanje = dalje.Y - dalje.H/3.2;
+            const daljeYvece = dalje.Y + dalje.H/3.2;
+
+            const nazadXmanje = dalje.XX - dalje.W/2.5;
+            const nazadXvece = dalje.XX + dalje.W/2.5;
+            const nazadYmanje = dalje.Y - dalje.H/3.2;
+            const nazadYvece = dalje.Y + dalje.H/3.2;
+
+            if(page == 1){
+                
+
+                const bocaXmanje = bocaX - bocaW/2/1.3;
+                const bocaXvece = bocaX + bocaW/2/1.3;
+                const bocaYmanje = bocaY - bocaH/2/1.4;
+                const bocaYvece = bocaY + bocaH/2/1.4;
+
+                const kutijaXmanje = kutijaX - kutijaW/2/1.3;
+                const kutijaXvece = kutijaX + kutijaW/2/1.3;
+                const kutijaYmanje = kutijaY - kutijaH/2/1.4;
+                const kutijaYvece = kutijaY + kutijaH/2/1.4;
+
+                if(e.offsetX > bocaXmanje && e.offsetX < bocaXvece && e.offsetY > bocaYmanje && e.offsetY < bocaYvece){
+                    page = 2;
+                    poklon.tip = 'boca';
+                }else if(e.offsetX > kutijaXmanje && e.offsetX < kutijaXvece && e.offsetY > kutijaYmanje && e.offsetY < kutijaYvece){
+                    page = 2;
+                    poklon.tip = 'kutija';
+                }  
+
+            }else if(page == 2 && poklon.tip == 'kutija' && e.offsetY > window.innerHeight/3.8){
+        
+                const Xmanje = kutije[0].x - kutije[0].w/2 * 0.7;
+                const Xvece = kutije[0].x + kutije[0].w/2 * 0.7;
+
+                const Y0manje = kutije[0].y - kutije[0].h/2 * 0.7;
+                const Y0vece = kutije[0].y + kutije[0].h/2 * 0.7;
+                const Y1manje = kutije[1].y - kutije[1].h/2 * 0.7;
+                const Y1vece = kutije[1].y + kutije[1].h/2 * 0.7;
+                const Y2manje = kutije[2].y - kutije[2].h/2 * 0.7;
+                const Y2vece = kutije[2].y + kutije[2].h/2 * 0.7;
+                const Y3manje = kutije[3].y - kutije[3].h/2 * 0.7;
+                const Y3vece = kutije[3].y + kutije[3].h/2 * 0.7;
+                const Y4manje = kutije[4].y - kutije[4].h/2 * 0.7;
+                const Y4vece = kutije[4].y + kutije[4].h/2 * 0.7;
+                const Y5manje = kutije[5].y - kutije[5].h/2 * 0.7;
+                const Y5vece = kutije[5].y + kutije[5].h/2 * 0.7;
+                const Y6manje = kutije[6].y - kutije[6].h/2 * 0.7;
+                const Y6vece = kutije[6].y + kutije[6].h/2 * 0.7;
+
+                const offsetX1 = e.offsetX - 2;
+                const offsetX2 = e.offsetX + 2;
+                const offsetY1 = e.offsetY - 2;
+                const offsetY2 = e.offsetY + 2;
+                if(lift < 10){
+                    if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y0manje && e.offsetY < Y0vece){
+                        page = 3;
+                        poklon.za = 'partner';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y1manje && e.offsetY < Y1vece){
+                        page = 3;
+                        poklon.za = 'majka';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y2manje && e.offsetY < Y2vece){
+                        page = 3;
+                        poklon.za = 'otac';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y3manje && e.offsetY < Y3vece){
+                        page = 3;
+                        poklon.za = 'sestra';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y4manje && e.offsetY < Y4vece){
+                        page = 3;
+                        poklon.za = 'brat';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y5manje && e.offsetY < Y5vece){
+                        page = 3;
+                        poklon.za = 'drugarica';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y6manje && e.offsetY < Y6vece){
+                        page = 3;
+                        poklon.za = 'drug';
+                        refreshPodatke();
+                    }
+                }
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(poklon.za){
+                        page = 3;
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 1;
+                }
+
+            }else if(page == 3 && poklon.tip == 'kutija'){
+                
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 4;
+                    textarea.maxlength = 250;
+                    textarea.value = '';
+                    textarea.style.display = 'block';
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 2;
+                }
+
+            }else if(page == 4 && poklon.tip == 'kutija'){
+                const offsetX1 = e.offsetX - 3;
+                const offsetX2 = e.offsetX + 3;
+                const offsetY1 = e.offsetY - 3;
+                const offsetY2 = e.offsetY + 3;
+                if(lift < 10){
+                    izrekeNiz = izrekePonudjene.filter((element, index) => {
+                        return element.checked == true;
+                    });
+                    izrekePonudjene.forEach((element, index) => {
+                        let x1 = element.x - element.w/2;
+                        let x11 = element.x + element.h/2;
+                        let y1 = element.y - element.w/2;
+                        let y11 = element.y + element.h/2;
+                        if(e.offsetX > x1 && e.offsetX < x11 && e.offsetY > y1 && e.offsetY < y11 && !action && e.offsetY > dimension/2.8){
+                            if(element.checked){
+                                izrekePonudjene[index].checked = false;
+                            }else if(!element.checked && izrekeNiz.length < 30){
+                                izrekePonudjene[index].checked = true;
+                            }else if(!element.checked && izrekeNiz.length >= 30){
+                                alert('Maksimum je 30 ceduljica');
+                            }
+                            izrekeNiz = izrekePonudjene.filter((element, index) => {
+                                return element.checked == true;
+                            });
+                        }
+                    });
+                }
+
+                const dodajPW = 2.4 * dimension * 0.1 * 0.8;
+                const dodajPH = dimension * 0.1 * 0.65;
+                const dodajPXmanje = window.innerWidth/2 - dodajPW/2;
+                const dodajPXvece = window.innerWidth/2 + dodajPW/2;
+                const dodajPYmanje = dimension * 0.32 - dodajPH/2;
+                const dodajPYvece = dimension * 0.32 + dodajPH/2;                
+
+                if(e.offsetX > dodajPXmanje && e.offsetX < dodajPXvece && e.offsetY > dodajPYmanje && e.offsetY < dodajPYvece && dodajPpressed){
+                    if(textarea.value.trim()){
+                        if(userID != 'Andreja'){
+                            e.preventDefault();
+                            if(izrekeNiz.length < 30){
+                                let index = izrekePonudjene.length;
+                                let mesto;
+                                let yy;
+                                let boja1 = plavi;
+                                let boja2 = zuti;
+                                if(index % 2 === 0){
+                                    mesto = 1;
+                                    if(izrekePonudjene[0]){
+                                        yy = izrekePonudjene[izrekePonudjene.length - 1].yy + 0.4;
+                                    }
+                                }else{
+                                    mesto = 2;
+                                    if(izrekePonudjene[0]){
+                                        yy = izrekePonudjene[izrekePonudjene.length - 1].yy;
+                                    }
+                                }
+
+                                izrekePonudjene.push({
+                                    mesto: mesto, 
+                                    w: 0.3 * dimension,
+                                    h: 0.3 * dimension,
+                                    x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                                    yy: yy,
+                                    mess: textarea.value,
+                                    action: false,
+                                    boja1: boja1,
+                                    boja2: boja2,
+                                    boja: boja1,
+                                    checked: true,
+                                    id: Math.random()
+                                });
+                                textarea.value = '';
+                            }else{
+                                alert('Maksimum je 30 ceduljica');
+                            }
+                            izrekeNiz = izrekePonudjene.filter((element, index) => {
+                                return element.checked == true;
+                            }); 
+                        }else if(userID == 'Andreja'){
+                            clearInterval(draw);
+                            adminPanelIzrekeF(textarea.value, poklon.za);
+                        }          
+                    }
+                }
+                
+
+               
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(izrekeNiz.length == 30 || userID == 'Andreja'){
+                        page = 5;
+                        textarea.value = '';
+                        textarea.style.display = 'none';
+                    }else if(izrekeNiz.length < 30){
+                        alert('Trebate izabrati ili napisati 30 ceduljica');
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 3;
+                    textarea.style.display = 'none';
+                }
+            }else if(page == 5 && poklon.tip == 'kutija'){
+                
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 6;
+                    textarea.maxlength = 250;
+                    textarea.value = '';
+                    textarea.style.display = 'block';
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 4;
+                    textarea.style.display = 'block';
+                }
+
+            }else if(page == 6 && poklon.tip == 'kutija'){
+                const offsetX1 = e.offsetX - 3;
+                const offsetX2 = e.offsetX + 3;
+                const offsetY1 = e.offsetY - 3;
+                const offsetY2 = e.offsetY + 3;
+                if(lift < 10){
+                    pitanjaNizNiz = pitanjaPonudjena.filter((element, index) => {
+                        return element.checked == true;
+                    });
+                    pitanjaPonudjena.forEach((element, index) => {
+                        let x1 = element.x - element.w/2;
+                        let x11 = element.x + element.h/2;
+                        let y1 = element.y - element.w/2;
+                        let y11 = element.y + element.h/2;
+                        if(e.offsetX > x1 && e.offsetX < x11 && e.offsetY > y1 && e.offsetY < y11 && !action && e.offsetY > dimension/2.8){
+                            if(element.checked){
+                                pitanjaPonudjena[index].checked = false;
+                            }else if(!element.checked && pitanjaNiz.length < 30){
+                                pitanjaPonudjena[index].checked = true;
+                            }else if(!element.checked && pitanjaNiz.length >= 30){
+                                alert('Maksimum je 30 ceduljica');
+                            }
+                            pitanjaNiz = pitanjaPonudjena.filter((element, index) => {
+                                return element.checked == true;
+                            });
+                        }
+                    });
+                }
+
+                const dodajPW = 2.4 * dimension * 0.1 * 0.8;
+                const dodajPH = dimension * 0.1 * 0.65;
+                const dodajPXmanje = window.innerWidth/2 - dodajPW/2;
+                const dodajPXvece = window.innerWidth/2 + dodajPW/2;
+                const dodajPYmanje = dimension * 0.32 - dodajPH/2;
+                const dodajPYvece = dimension * 0.32 + dodajPH/2;                
+
+                if(e.offsetX > dodajPXmanje && e.offsetX < dodajPXvece && e.offsetY > dodajPYmanje && e.offsetY < dodajPYvece && dodajPpressed){
+                    if(textarea.value.trim()){
+                        if(userID != 'Andreja'){
+                            e.preventDefault();
+                            if(pitanjaNiz.length < 30){
+                                let index = pitanjaPonudjena.length;
+                                let mesto;
+                                let yy;
+                                let boja1 = plavi;
+                                let boja2 = zuti;
+                                if(index % 2 === 0){
+                                    mesto = 1;
+                                    if(pitanjaPonudjena[0]){
+                                        yy = pitanjaPonudjena[pitanjaPonudjena.length - 1].yy + 0.4;
+                                    }
+                                }else{
+                                    mesto = 2;
+                                    if(pitanjaPonudjena[0]){
+                                        yy = pitanjaPonudjena[pitanjaPonudjena.length - 1].yy;
+                                    }
+                                }
+
+                                pitanjaPonudjena.push({
+                                    mesto: mesto, 
+                                    w: 0.3 * dimension,
+                                    h: 0.3 * dimension,
+                                    x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                                    yy: yy,
+                                    mess: textarea.value,
+                                    action: false,
+                                    boja1: boja1,
+                                    boja2: boja2,
+                                    boja: boja1,
+                                    checked: true,
+                                    id: Math.random()
+                                });
+                                textarea.value = '';
+                                pitanjaNiz = pitanjaPonudjena.filter((element, index) => {
+                                    return element.checked == true;
+                                });
+                            }else{
+                                alert('Maksimum je 30 ceduljica');
+                            }
+                        }else if(userID == 'Andreja'){
+                            clearInterval(draw);
+                            adminPanelPitanjaF(textarea.value, poklon.za);
+                        }
+                    }
+                }
+
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(pitanjaNiz.length == 30 || userID == 'Andreja'){
+                        page = 7;
+                        textarea.style.display = 'none';
+                    }else if(izrekeNiz.length < 30){
+                        alert('Trebate izabrati ili napisati 30 ceduljica');
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 5;
+                    textarea.style.display = 'none';
+                }
+            }else if(page == 7 && poklon.tip == 'kutija'){
+                
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 8;
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 6;
+                    textarea.style.display = 'block';
+                }
+
+            }else if(page == 8 && poklon.tip == 'kutija'){
+            
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(userID != 'Andreja'){
+                        if(fileInput.files.length == 0) {
+                            alert('Trebate uneti sliku');
+                        }else if(!textInput.value.trim()){
+                            alert('Trebate uneti tajnu poruku ili link pesme');
+                        }else{
+                            page = 9;
+                            fileInputL.style.display = 'none';
+                            textInput.style.display = 'none';
+                            hlink.style.display = 'none';
+                        }
+                    }else{
+                        dezenF('dezen');
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 7;
+                    fileInputL.style.display = 'none';
+                    textInput.style.display = 'none';
+                    textarea.style.display = 'none';
+                    hlink.style.display = 'none';
+                }
+
+            }else if(page == 9 && poklon.tip == 'kutija'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 10;
+                    formContainer.style.display = 'block';
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 8;
+                    formContainer.style.display = 'none';
+                    fileInputL.style.display = 'block';
+                    textInput.style.display = 'block';
+                    hlink.style.display = 'block';
+                }
+            }else if(page == 10 && poklon.tip == 'kutija'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(omoguci == 1){
+                        omoguci = 0;
+                        controller.abort();
+                        controller = new AbortController();
+                        slanje();
+                        let tout = setTimeout(()=>{
+                            if(poklon.tip == 'kutija' && page == 10 || poklon.tip == 'boca' && page == 9){
+                                controller.abort();
+                                alert('Doslo je do greske prilikom slanja pokusajte ponovo za par sekundi i proverite konekciju sa internetom');
+                                omoguci = 1;
+                                console.log('aborted')
+                            }
+                        }, 4000);
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 9;
+                    formContainer.style.display = 'none';
+                }
+            }else if(page == 2 && poklon.tip == 'boca'){
+                
+                const Xmanje = boce[0].x - boce[0].w/2/1.05;
+                const Xvece = boce[0].x + boce[0].w/2/1.05;
+
+                const Y0manje = boce[0].y - boce[0].h/2/1.3;
+                const Y0vece = boce[0].y + boce[0].h/2/1.3;
+                const Y1manje = boce[1].y - boce[1].h/2/1.3;
+                const Y1vece = boce[1].y + boce[1].h/2/1.3;
+                const Y2manje = boce[2].y - boce[2].h/2/1.3;
+                const Y2vece = boce[2].y + boce[2].h/2/1.3;
+                const Y3manje = boce[3].y - boce[3].h/2/1.3;
+                const Y3vece = boce[3].y + boce[3].h/2/1.3;
+                const Y4manje = boce[4].y - boce[4].h/2/1.3;
+                const Y4vece = boce[4].y + boce[4].h/2/1.3;
+                const Y5manje = boce[5].y - boce[5].h/2/1.3;
+                const Y5vece = boce[5].y + boce[5].h/2/1.3;
+                const Y6manje = boce[6].y - boce[6].h/2/1.3;
+                const Y6vece = boce[6].y + boce[6].h/2/1.3;
+
+                const offsetX1 = e.offsetX - 2;
+                const offsetX2 = e.offsetX + 2;
+                const offsetY1 = e.offsetY - 2;
+                const offsetY2 = e.offsetY + 2;
+                if(lift < 10){
+                    if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y0manje && e.offsetY < Y0vece){
+                        page = 3;
+                        poklon.za = 'partner';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y1manje && e.offsetY < Y1vece){
+                        page = 3;
+                        poklon.za = 'majka';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y2manje && e.offsetY < Y2vece){
+                        page = 3;
+                        poklon.za = 'otac';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y3manje && e.offsetY < Y3vece){
+                        page = 3;
+                        poklon.za = 'sestra';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y4manje && e.offsetY < Y4vece){
+                        page = 3;
+                        poklon.za = 'brat';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y5manje && e.offsetY < Y5vece){
+                        page = 3;
+                        poklon.za = 'drugarica';
+                        refreshPodatke();
+                    }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y6manje && e.offsetY < Y6vece){
+                        page = 3;
+                        poklon.za = 'drug';
+                        refreshPodatke();
+                    }
+                }
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(poklon.za){
+                        page = 3;
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 1;
+                }
+
+            }else if(page == 3 && poklon.tip == 'boca'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 4;
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 2;
+                    formContainer.style.display = 'none';
+                }
+            }else if(page == 4 && poklon.tip == 'boca'){
+                dezeniPonudjeni.forEach((element, index) => {
+                    let x1 = element.x - element.w/2;
+                    let x11 = element.x + element.w/2;
+                    let y1 = element.y - element.h/2;
+                    let y11 = element.y + element.h/2;
+                    if(e.offsetX > x1 && e.offsetX < x11 && e.offsetY > y1 && e.offsetY < y11 && !action){
+                        if(!element.checked){
+                            dezeniPonudjeni.forEach((element1, index1) => {
+                                dezeniPonudjeni[index1].checked = false;
+                            });
+                            dezeniPonudjeni[index].checked = true;
+                            idDezena = element.id;
+                            extenzijaDezena = element.extenzija;
+                            slikaDezena.setAttribute('src', 'uploads/'+idDezena + extenzijaDezena);
+                        }else{
+                            dezeniPonudjeni[index].checked = false;
+                            idDezena = '';
+                            extenzijaDezena = '';
+                        }
+                    }
+                });
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(idDezena || userID == 'Andreja'){
+                        page = 5;
+                        textarea.style.display = 'none';
+                    }else if(!idDezena){
+                        alert('Morate odabrati dezen papira');
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 3;
+                    formContainer.style.display = 'none';
+                }
+            }else if(page == 5 && poklon.tip == 'boca'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 6;
+                    textarea.style.display = 'block';
+                    textarea.maxlength = 1000;
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 4;
+                    textarea.style.display = 'none';
+                }
+            }else if(page == 6 && poklon.tip == 'boca'){
+                const offsetX1 = e.offsetX - 3;
+                const offsetX2 = e.offsetX + 3;
+                const offsetY1 = e.offsetY - 3;
+                const offsetY2 = e.offsetY + 3;
+                if(lift < 10){
+                    porukePonudjene.forEach((element, index) => {
+                        let x1 = element.x - element.w/2.1;
+                        let x11 = element.x + element.w/2.1;
+                        let y1 = element.y - element.h/3;
+                        let y11 = element.y + element.h/3;
+                        if(e.offsetX > x1 && e.offsetX < x11 && e.offsetY > y1 && e.offsetY < y11 && !action){
+                            if(userID != 'Andreja' && e.offsetY < dimension * window.innerHeight/dimension * 0.4
+                                && e.target.tagName != 'TEXTAREA'
+                            ){
+                                textarea.value = element.mess;
+                                slovoDF();
+                            }else if(userID == 'Andreja'){
+                                if(!element.checked){
+                                    porukePonudjene[index].checked = true;
+                                }else{
+                                    porukePonudjene[index].checked = false;
+                                }
+                            }
+                        }
+                    });
+                }
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(textarea.value.trim() || userID == 'Andreja'){
+                        page = 7;
+                        textarea.style.display = 'none';
+                        porukaDezena = textarea.value;
+                    }else{
+                        alert('Unesite ili odaberite svoju poruku');
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 5;
+                    textarea.style.display = 'none';
+                }
+            }else if(page == 7 && poklon.tip == 'boca'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 8;
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 6;
+                    textarea.style.display = 'block';
+                }
+            }else if(page == 8 && poklon.tip == 'boca'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    page = 9;
+                    formContainer.style.display = 'block';
+                    textarea.style.display = 'none';
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 7;
+                    formContainer.style.display = 'none';
+                    textarea.style.display = 'none';
+                }
+            }else if(page == 9 && poklon.tip == 'boca'){
+                if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece && dalje.pressed){
+                    if(omoguci == 1){
+                        omoguci = 0;
+                        controller.abort();
+                        controller = new AbortController();
+                        slanje();
+                        let tout = setTimeout(()=>{
+                            if(poklon.tip == 'kutija' && page == 10 || poklon.tip == 'boca' && page == 9){
+                                controller.abort();
+                                alert('Doslo je do greske prilikom slanja pokusajte ponovo za par sekundi i proverite konekciju sa internetom');
+                                omoguci = 1;
+                                console.log('aborted')
+                            }
+                        }, 4000);
+                    }
+                }else if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece && dalje.npressed){
+                    page = 8;
+                    formContainer.style.display = 'none';
+                }
+            }
+            
+
+
+            dalje.pressed = false;
+            dalje.npressed = false;
+            dalje.ppressed = false;
+            bocaPressed = false;
+            kutijaPressed = false;
+            k1pressed = false;
+            k2pressed = false;
+            k3pressed = false;
+            k4pressed = false;
+            k5pressed = false;
+            k6pressed = false;
+            k7pressed = false;
+
+            p1pressed = false;
+            p2pressed = false;
+            p3pressed = false;
+            p4pressed = false;
+            p5pressed = false;
+            p6pressed = false;
+            p7pressed = false;
+
+            dodajPpressed = false;
+
+            lift = 0;
+        });
+
+        window.addEventListener('touchmove', (e) => {   
+            if(e.target.tagName.toLowerCase() == 'input' || e.target.tagName.toLowerCase() == 'textarea' 
+            || e.target.tagName.toLowerCase() == 'div'){ 
+                return; 
+            }
+            if(e.target.tagName.toLowerCase() == 'canvas' && userX > window.innerWidth/2 + dimension*0.3){ 
+                return; 
+            }
+            if(e.target.tagName.toLowerCase() == 'canvas' && userX < window.innerWidth/2 - dimension*0.3){ 
+                return; 
+            }
+            if (e.touches.length === 1) {
+                e.preventDefault();
+            }
+        }, {passive: false});
+
+       
+
+        window.addEventListener('pointerdown', (e) => {   
+
+            userX = e.offsetX;
+            userY = e.offsetY;
+            userYY = e.offsetY;
+            pressed = true;
+
+            const daljeXmanje = dalje.X - dalje.W/2.5;
+            const daljeXvece = dalje.X + dalje.W/2.5;
+            const daljeYmanje = dalje.Y - dalje.H/3.2;
+            const daljeYvece = dalje.Y + dalje.H/3.2;
+            if(e.offsetX > daljeXmanje && e.offsetX < daljeXvece && e.offsetY > daljeYmanje && e.offsetY < daljeYvece){
+                dalje.pressed = true;
+            }
+
+            const nazadXmanje = dalje.XX - dalje.W/2.5;
+            const nazadXvece = dalje.XX + dalje.W/2.5;
+            const nazadYmanje = dalje.Y - dalje.H/3.2;
+            const nazadYvece = dalje.Y + dalje.H/3.2;
+            if(e.offsetX > nazadXmanje && e.offsetX < nazadXvece && e.offsetY > nazadYmanje && e.offsetY < nazadYvece){
+                dalje.npressed = true;
+            }
+
+           // const bocaX = window.innerWidth/2 - dimension/2 + dimension * 0.2;
+           // const bocaY = 0.6 * dimension;
+           // const bocaW = 1196/1000 * dimension/3;
+           // const bocaH = 1080/1000 * dimension/3;
+
+           // const kutijaX = window.innerWidth/2 - dimension/2 + dimension * 0.8;
+            //const kutijaY = 0.6 * dimension;
+           // const kutijaW = 1196/1000 * dimension/3;
+           // const kutijaH = 1080/1000 * dimension/3;
+
+            const bocaXmanje = bocaX - bocaW/2/1.3;
+            const bocaXvece = bocaX + bocaW/2/1.3;
+            const bocaYmanje = bocaY - bocaH/2/1.4;
+            const bocaYvece = bocaY + bocaH/2/1.4;
+
+            const kutijaXmanje = kutijaX - kutijaW/2/1.3;
+            const kutijaXvece = kutijaX + kutijaW/2/1.3;
+            const kutijaYmanje = kutijaY - kutijaH/2/1.4;
+            const kutijaYvece = kutijaY + kutijaH/2/1.4;
+
+            if(e.offsetX > bocaXmanje && e.offsetX < bocaXvece && e.offsetY > bocaYmanje && e.offsetY < bocaYvece){
+                bocaPressed = true;
+            }else if(e.offsetX > kutijaXmanje && e.offsetX < kutijaXvece && e.offsetY > kutijaYmanje && e.offsetY < kutijaYvece){
+                kutijaPressed = true;
+            } 
+
+            if(poklon.tip == 'kutija' && page == 2 && e.offsetY > window.innerHeight/3.8){
+                const Xmanje = kutije[0].x - kutije[0].w/2 * 0.7;
+                const Xvece = kutije[0].x + kutije[0].w/2 * 0.7;
+
+                const Y0manje = kutije[0].y - kutije[0].h/2 * 0.7;
+                const Y0vece = kutije[0].y + kutije[0].h/2 * 0.7;
+                const Y1manje = kutije[1].y - kutije[1].h/2 * 0.7;
+                const Y1vece = kutije[1].y + kutije[1].h/2 * 0.7;
+                const Y2manje = kutije[2].y - kutije[2].h/2 * 0.7;
+                const Y2vece = kutije[2].y + kutije[2].h/2 * 0.7;
+                const Y3manje = kutije[3].y - kutije[3].h/2 * 0.7;
+                const Y3vece = kutije[3].y + kutije[3].h/2 * 0.7;
+                const Y4manje = kutije[4].y - kutije[4].h/2 * 0.7;
+                const Y4vece = kutije[4].y + kutije[4].h/2 * 0.7;
+                const Y5manje = kutije[5].y - kutije[5].h/2 * 0.7;
+                const Y5vece = kutije[5].y + kutije[5].h/2 * 0.7;
+                const Y6manje = kutije[6].y - kutije[6].h/2 * 0.7;
+                const Y6vece = kutije[6].y + kutije[6].h/2 * 0.7;
+
+                
+                if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y0manje && e.offsetY < Y0vece){
+                    k1pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y1manje && e.offsetY < Y1vece){
+                    k2pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y2manje && e.offsetY < Y2vece){
+                    k3pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y3manje && e.offsetY < Y3vece){
+                    k4pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y4manje && e.offsetY < Y4vece){
+                    k5pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y5manje && e.offsetY < Y5vece){
+                    k6pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y6manje && e.offsetY < Y6vece){
+                    k7pressed = true;
+                }
+            }else if(page == 2 && poklon.tip == 'boca'){
+                
+                const Xmanje = boce[0].x - boce[0].w/2/1.05;
+                const Xvece = boce[0].x + boce[0].w/2/1.05;
+
+                const Y0manje = boce[0].y - boce[0].h/2/1.3;
+                const Y0vece = boce[0].y + boce[0].h/2/1.3;
+                const Y1manje = boce[1].y - boce[1].h/2/1.3;
+                const Y1vece = boce[1].y + boce[1].h/2/1.3;
+                const Y2manje = boce[2].y - boce[2].h/2/1.3;
+                const Y2vece = boce[2].y + boce[2].h/2/1.3;
+                const Y3manje = boce[3].y - boce[3].h/2/1.3;
+                const Y3vece = boce[3].y + boce[3].h/2/1.3;
+                const Y4manje = boce[4].y - boce[4].h/2/1.3;
+                const Y4vece = boce[4].y + boce[4].h/2/1.3;
+                const Y5manje = boce[5].y - boce[5].h/2/1.3;
+                const Y5vece = boce[5].y + boce[5].h/2/1.3;
+                const Y6manje = boce[6].y - boce[6].h/2/1.3;
+                const Y6vece = boce[6].y + boce[6].h/2/1.3;
+
+                
+                if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y0manje && e.offsetY < Y0vece){
+                    p1pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y1manje && e.offsetY < Y1vece){
+                    p2pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y2manje && e.offsetY < Y2vece){
+                    p3pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y3manje && e.offsetY < Y3vece){
+                    p4pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y4manje && e.offsetY < Y4vece){
+                    p5pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y5manje && e.offsetY < Y5vece){
+                    p6pressed = true;
+                }else if(e.offsetX > Xmanje && e.offsetX < Xvece && e.offsetY > Y6manje && e.offsetY < Y6vece){
+                    p7pressed = true;
+                }
+            
+            }else if(page == 4 && poklon.tip == 'kutija' || page == 6 && poklon.tip == 'kutija'){
+                const dodajPW = 2.4 * dimension * 0.1 * 0.8;
+                const dodajPH = dimension * 0.1 * 0.65;
+                const dodajPXmanje = window.innerWidth/2 - dodajPW/2;
+                const dodajPXvece = window.innerWidth/2 + dodajPW/2;
+                const dodajPYmanje = dimension * 0.32 - dodajPH/2;
+                const dodajPYvece = dimension * 0.32 + dodajPH/2;  
+
+                if(e.offsetX > dodajPXmanje && e.offsetX < dodajPXvece && e.offsetY > dodajPYmanje && e.offsetY < dodajPYvece){
+                    dodajPpressed = true;
+                }
+            }
+        });
+
+        
+          
+            window.addEventListener('pointermove', (e) => {
+                    if(pressed){
+                        if(e.offsetY > userY + 10 || e.offsetY < userY - 10){
+                            lift = 100;
+                        }
+                        lift++;
+                        if(lift > 10){
+                            p1pressed = false;
+                            p2pressed = false;
+                            p3pressed = false;
+                            p4pressed = false;
+                            p5pressed = false;
+                            p6pressed = false;
+                            p7pressed = false;
+
+                            k1pressed = false;
+                            k2pressed = false;
+                            k3pressed = false;
+                            k4pressed = false;
+                            k5pressed = false;
+                            k6pressed = false;
+                            k7pressed = false;
+                        }
+                    }
+
+                    if(pressed && page == 4 && izrekePonudjene[0] && poklon.tip == 'kutija' && e.offsetY > dimension/2.8){
+                        let userYDIF = userY - e.offsetY;
+                        const novaPozicija = izrekePonudjene[0].yy - userYDIF/dimension;
+                        const novaPozicija1 = izrekePonudjene[izrekePonudjene.length-1].yy - userYDIF/dimension;
+                        izrekePonudjene.forEach((element, index) => {
+                            if(novaPozicija < 0.6 && novaPozicija1 > 0.6){
+                                izrekePonudjene[index].yy = element.yy - userYDIF/dimension;
+                                //izrekePonudjene[0].yy = izrekePonudjene[0].yy - userYDIF/dimension;
+                            }
+                        });
+                        userY = e.offsetY;
+                    }else if(pressed && page == 6 && pitanjaPonudjena[0] && poklon.tip == 'kutija' && e.offsetY > dimension/2.8){
+                        let userYDIF = userY - e.offsetY;
+                        const novaPozicija = pitanjaPonudjena[0].yy - userYDIF/dimension;
+                        const novaPozicija1 = pitanjaPonudjena[pitanjaPonudjena.length-1].yy - userYDIF/dimension;
+                        pitanjaPonudjena.forEach((element, index) => {
+                            if(novaPozicija < 0.6 && novaPozicija1 > 0.6){
+                                pitanjaPonudjena[index].yy = element.yy - userYDIF/dimension;
+                                //pitanjaPonudjena[0].yy = pitanjaPonudjena[0].yy - userYDIF/dimension;
+                            }
+                        });
+                        userY = e.offsetY;
+                    }else if(pressed && page == 2 && poklon.tip == 'boca' && boce[0]){
+                        let userYDIF = userY - e.offsetY;
+                        const novaPozicija = boce[0].yy - userYDIF/dimension;
+                        const novaPozicija1 = boce[boce.length-1].yy - userYDIF/dimension;
+                        boce.forEach((element, index) => {
+                            if(novaPozicija < 0.6 && novaPozicija1 > 0.6){
+                                boce[index].yy = element.yy - userYDIF/dimension;
+                            }
+                        });
+                        userY = e.offsetY;
+                    }else if(pressed && page == 2 && poklon.tip == 'kutija' && kutije[0]){
+                        let userYDIF = userY - e.offsetY;
+                        const novaPozicija = kutije[0].yy - userYDIF/dimension;
+                        const novaPozicija1 = kutije[kutije.length-1].yy - userYDIF/dimension;
+                        kutije.forEach((element, index) => {
+                            if(novaPozicija < 0.6 && novaPozicija1 > 0.6){
+                                kutije[index].yy = element.yy - userYDIF/dimension;
+                            }
+                        });
+                        userY = e.offsetY;
+                    }else if(pressed && page == 4 && poklon.tip == 'boca' && dezeniPonudjeni[0]){
+                        let userYDIF = userY - e.offsetY;
+                        const novaPozicija = dezeniPonudjeni[0].yy - userYDIF/dimension;
+                        const novaPozicija1 = dezeniPonudjeni[dezeniPonudjeni.length-1].yy - userYDIF/dimension;
+                        dezeniPonudjeni.forEach((element, index) => {
+                            if(novaPozicija < 0.6 && novaPozicija1 > 0.6){
+                                dezeniPonudjeni[index].yy = element.yy - userYDIF/dimension;
+                            }
+                        });
+                        userY = e.offsetY;
+                    }else if(pressed && page == 6 && poklon.tip == 'boca' && porukePonudjene[0]){
+                        if(e.offsetY < dimension * window.innerHeight/dimension * 0.4 && e.target.tagName != 'TEXTAREA'){
+                            let userYDIF = userY - e.offsetY;
+                            const novaPozicija = porukePonudjene[0].yy - userYDIF/dimension;
+                            const novaPozicija1 = porukePonudjene[porukePonudjene.length-1].yy - userYDIF/dimension;
+                            porukePonudjene.forEach((element, index) => {
+                                if(novaPozicija > 0.2 && novaPozicija1 < 0.2){
+                                    porukePonudjene[index].yy = element.yy - userYDIF/dimension;
+                                }
+                            });
+                            userY = e.offsetY;
+                        }
+                    }
+            });
+
+        
+
+        textarea.addEventListener('keyup', (e) =>{
+            if(page == 4 && e.key === 'Enter' && textarea.value.trim() && poklon.tip == 'kutija'){
+                if(userID != 'Andreja'){
+                    e.preventDefault();
+                    if(izrekeNiz.length < 30){
+                        let index = izrekePonudjene.length;
+                        let mesto;
+                        let yy;
+                        let boja1 = plavi;
+                        let boja2 = zuti;
+                        if(index % 2 === 0){
+                            mesto = 1;
+                            if(izrekePonudjene[0]){
+                                yy = izrekePonudjene[izrekePonudjene.length - 1].yy + 0.4;
+                            }
+                        }else{
+                            mesto = 2;
+                            if(izrekePonudjene[0]){
+                                yy = izrekePonudjene[izrekePonudjene.length - 1].yy;
+                            }
+                        }
+
+                        izrekePonudjene.push({
+                            mesto: mesto, 
+                            w: 0.3 * dimension,
+                            h: 0.3 * dimension,
+                            x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                            yy: yy,
+                            mess: textarea.value,
+                            action: false,
+                            boja1: boja1,
+                            boja2: boja2,
+                            boja: boja1,
+                            checked: true,
+                            id: Math.random()
+                        });
+                        textarea.value = '';
+                    }else{
+                        alert('Maksimum je 30 ceduljica');
+                    }
+                    izrekeNiz = izrekePonudjene.filter((element, index) => {
+                        return element.checked == true;
+                    }); 
+                }else if(userID == 'Andreja'){
+                    clearInterval(draw);
+                    adminPanelIzrekeF(textarea.value, poklon.za);
+                }               
+            }else if(page == 6 && e.key === 'Enter' && textarea.value.trim() && poklon.tip == 'kutija'){
+                if(userID != 'Andreja'){
+                    e.preventDefault();
+                    if(pitanjaNiz.length < 30){
+                        let index = pitanjaPonudjena.length;
+                        let mesto;
+                        let yy;
+                        let boja1 = plavi;
+                        let boja2 = zuti;
+                        if(index % 2 === 0){
+                            mesto = 1;
+                            if(pitanjaPonudjena[0]){
+                                yy = pitanjaPonudjena[pitanjaPonudjena.length - 1].yy + 0.4;
+                            }
+                        }else{
+                            mesto = 2;
+                            if(pitanjaPonudjena[0]){
+                                yy = pitanjaPonudjena[pitanjaPonudjena.length - 1].yy;
+                            }
+                        }
+
+                        pitanjaPonudjena.push({
+                            mesto: mesto, 
+                            w: 0.3 * dimension,
+                            h: 0.3 * dimension,
+                            x: (window.innerWidth/2 - dimension/2) + dimension * 0.8,
+                            yy: yy,
+                            mess: textarea.value,
+                            action: false,
+                            boja1: boja1,
+                            boja2: boja2,
+                            boja: boja1,
+                            checked: true,
+                            id: Math.random()
+                        });
+                        textarea.value = '';
+                        pitanjaNiz = pitanjaPonudjena.filter((element, index) => {
+                            return element.checked == true;
+                        });
+                    }else{
+                        alert('Maksimum je 30 ceduljica');
+                    }
+                }else if(userID == 'Andreja'){
+                    clearInterval(draw);
+                    adminPanelPitanjaF(textarea.value, poklon.za);
+                }
+            }if(page == 6 && e.keyCode == 107 && textarea.value.trim() && poklon.tip == 'boca'){
+                if(userID == 'Andreja'){
+                    clearInterval(draw);
+                    adminPanelPorukeF(textarea.value, poklon.za);
+                    textarea.value = '';
+                }
+            }
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
